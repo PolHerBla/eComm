@@ -27,6 +27,11 @@ const models = {
     const result = await db.query("DELETE FROM alumnos WHERE id = ?", id);
     return result;
   },
+  // Ruta per conseguir email, útil per validar el usuari que es conecta
+  getUserByEmail: async (email) => {
+    const [result] = await db.query("SELECT * FROM alumnos WHERE email = ?", [email])
+    return result[0];
+  }
 };
 
 module.exports = models;

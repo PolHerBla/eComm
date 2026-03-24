@@ -1,4 +1,6 @@
 const model = require("../model/userModel");
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 exports.getAll = async (req, res) => {
   try {
@@ -53,5 +55,20 @@ exports.deleteUser = async (req, res) => {
     res.json({ message: "Usuario eliminado correctamente" });
   } catch (error) {
     res.status(500).json({error: 'Error al eliminar usuario'});
+  }
+};
+
+exports.login = async (req,res) => {
+  const user = req.body;
+  try {
+    const response = await model.getUserByEmail(user.email);
+    if (!response) {
+      return res.status(404).json({error: 'El mail no coincide con el de ningun alumno'});
+    }
+    const token = jwt.sign({id: user.id, email: user.email}, process.env.JWT_SECRET);
+
+    res.json({ message:"Login exitoso", token: token});
+  } catch (error) {
+    res.status(500).json({error: "Error al iniciar sesion"});
   }
 };
