@@ -61,8 +61,8 @@ exports.deleteUser = async (req, res) => {
 exports.login = async (req,res) => {
   const user = req.body;
   try {
-    const dbUser = await model.getUserByEmail(user.email);
-    if (!response) {
+    const dbUser = await model.getUserByEmail(user.email).json();
+    if (!dbUser) {
       return res.status(404).json({error: 'El mail no coincide con el de ningun alumno'});
     }
     const token = jwt.sign({id: dbUser.id, email: dbUser.email}, process.env.JWT_SECRET, {expiresIn : '1h',});
