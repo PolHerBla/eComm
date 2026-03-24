@@ -3,7 +3,7 @@ const router = express.Router();
 const controller = require("../controller/userController");
 const jwt = require("../middleware/webToken");
 
-router.login("/login", controller.login);
+router.post("/login", controller.login);
 
 router.get("/", jwt, controller.getAll);
 router.get("/:id", jwt,controller.getUserById);

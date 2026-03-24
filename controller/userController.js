@@ -61,11 +61,11 @@ exports.deleteUser = async (req, res) => {
 exports.login = async (req,res) => {
   const user = req.body;
   try {
-    const response = await model.getUserByEmail(user.email);
+    const dbUser = await model.getUserByEmail(user.email);
     if (!response) {
       return res.status(404).json({error: 'El mail no coincide con el de ningun alumno'});
     }
-    const token = jwt.sign({id: user.id, email: user.email}, process.env.JWT_SECRET);
+    const token = jwt.sign({id: dbUser.id, email: dbUser.email}, process.env.JWT_SECRET, {expiresIn : '1h',});
 
     res.json({ message:"Login exitoso", token: token});
   } catch (error) {
