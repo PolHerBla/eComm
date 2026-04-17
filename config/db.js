@@ -1,13 +1,20 @@
 const mysql = require("mysql2");
 require('dotenv').config();
 
+const dbHost = process.env.DB_HOST;
+const dbUser = process.env.DB_USER;
+const dbPass = process.env.DB_PASSWORD;
+const dbName = process.env.DB_NAME;
+
 const port = process.env.port;
 
+
+
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'ApiAct3'
+  host: `${dbHost}`,
+  user: `${dbUser}`,
+  password: `${dbPass}`,
+  database: `${dbName}`,
 });
     
 const db = connection.promise();

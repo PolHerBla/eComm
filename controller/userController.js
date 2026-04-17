@@ -1,6 +1,6 @@
 const model = require("../model/userModel");
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 exports.getAll = async (req, res) => {
   try {
@@ -54,21 +54,27 @@ exports.deleteUser = async (req, res) => {
     }
     res.json({ message: "Usuario eliminado correctamente" });
   } catch (error) {
-    res.status(500).json({error: 'Error al eliminar usuario'});
+    res.status(500).json({ error: "Error al eliminar usuario" });
   }
 };
 
-exports.login = async (req,res) => {
+exports.login = async (req, res) => {
   const user = req.body;
   try {
-    const dbUser = await model.getUserByEmail(user.email).json();
+    const dbUser = await model.getUserByCredentials(user.email, user.password);
     if (!dbUser) {
-      return res.status(404).json({error: 'El mail no coincide con el de ningun alumno'});
+      return res
+        .status(404)
+        .json({ error: "El mail no coincide con el de ningun alumno" });
     }
-    const token = jwt.sign({id: dbUser.id, email: dbUser.email}, process.env.JWT_SECRET, {expiresIn : '1h',});
+    const token = jwt.sign(
+      { usr_id: dbUser.usr_id, email: dbUser.email },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" },
+    );
 
-    res.json({ message:"Login exitoso", token: token});
+    res.json({ message: "Login exitoso", token: token });
   } catch (error) {
-    res.status(500).json({error: "Error al iniciar sesion"});
+    res.status(500).json({ error: "Error al iniciar sesion" });
   }
 };
