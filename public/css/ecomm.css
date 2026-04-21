@@ -211,3 +211,44 @@ body {
     height: auto;
   }
 }
+
+/* Contenedor relativo para que las imágenes absolutas se alineen dentro */
+.product-image-container {
+  position: relative;
+  width: 100%;
+  /* Esto obliga a que la altura sea siempre igual al ancho (1:1) */
+  /* Si prefieres más vertical, puedes usar 3 / 4 o 2 / 3 */
+  aspect-ratio: 1 / 1; 
+  
+  overflow: hidden;
+  background-color: #f5f5f5;
+  border-radius: 16px 16px 0 0;
+}
+
+.product-image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* 'cover' asegura que la imagen llene el espacio sin deformarse */
+  /* 'contain' asegura que se vea TODA la imagen, aunque deje bordes si no es cuadrada */
+  object-fit: cover; 
+  
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* La imagen de hover empieza invisible */
+.img-hover {
+  opacity: 0;
+}
+
+/* Al pasar por encima de la card, cambiamos las opacidades */
+.product-card:hover .img-primary {
+  opacity: 0;
+}
+
+.product-card:hover .img-hover {
+  opacity: 1;
+}

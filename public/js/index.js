@@ -2,7 +2,7 @@ async function cargarProductos(params) {
     const token = cargarToken();
 
     try {
-        const response = await fetch("http://localhost:8080/api/productos", {
+        const response = await fetch("/api/productos", {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -48,10 +48,18 @@ function crearCard(name, splatterImg, imgHover) {
     const card = document.createElement('article');
     card.classList.add("product-card");
     
-    const cardImg = document.createElement('img');
-    cardImg.classList.add("product-image");
-    cardImg.src = `${splatterImg}`;
+    const cardImg = document.createElement('div');
+    cardImg.classList.add("product-image-container");
 
+    const imagePrimary = document.createElement('img');
+    imagePrimary.classList.add("img-primary");
+    imagePrimary.src = `${splatterImg}`;
+
+    const imageHover = document.createElement('img');
+    imageHover.classList.add("img-hover");
+    imageHover.src = `${imgHover}`;
+
+    cardImg.append(imagePrimary, imageHover)
 
     // Events que pertanyen a cada card i canvien la imatge al fer hover amb el mouse
     cardImg.addEventListener('mouseenter', () => {

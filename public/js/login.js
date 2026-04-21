@@ -1,4 +1,4 @@
-const getAllUrl = "http://127.0.0.1:8080/api/users";
+const getAllUrl = "/users";
 
 // const loadAllButton = document.getElementById("loadAllButton");
 
@@ -193,7 +193,7 @@ async function login() {
   const passwordInput = document.getElementById("inputPassword").value;
 
   try {
-    const response = await fetch("http://127.0.0.1:8080/api/login", {
+    const response = await fetch("/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
