@@ -21,8 +21,9 @@ async function cargarProductos(params) {
 
                 const images = JSON.parse(product.product_images);
                 const splatterImg = images[0];
+                const imgHover = images[1] || images[0]
 
-                crearCard(name, splatterImg);
+                crearCard(name, splatterImg, imgHover);
             });
         } else {
             throw new Error("Error al comunicar con el servidor");
@@ -41,7 +42,7 @@ function cargarToken() {
     return token;
 }
 
-function crearCard(name, splatterImg) {
+function crearCard(name, splatterImg, imgHover) {
     const section = document.getElementById('products-div');
 
     const card = document.createElement('article');
@@ -50,6 +51,16 @@ function crearCard(name, splatterImg) {
     const cardImg = document.createElement('img');
     cardImg.classList.add("product-image");
     cardImg.src = `${splatterImg}`;
+
+
+    // Events que pertanyen a cada card i canvien la imatge al fer hover amb el mouse
+    cardImg.addEventListener('mouseenter', () => {
+        cardImg.src = `${imgHover}`;
+    })
+
+    cardImg.addEventListener("mouseleave", () => {
+      cardImg.src = `${splatterImg}`;
+    });
 
     const cardProductInfo = document.createElement('div');
     cardProductInfo.classList.add('product-info');
