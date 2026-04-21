@@ -211,7 +211,7 @@ async function login() {
       campoEstado.classList.add("mostrar-mensaje");
 
       setTimeout(() => {
-        window.location.href = "ecommerce.html";
+        window.location.href = "/html/ecommerce.html";
       }, 2000)
     } 
     else

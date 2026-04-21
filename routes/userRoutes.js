@@ -5,6 +5,8 @@ const jwt = require("../middleware/webToken");
 
 router.post("/login", controller.login);
 
+
+
 router.get("/productos", jwt, controller.getAllProducts);
 router.get("/productos/:id", jwt,controller.getUserById);
 router.post("/", jwt, controller.createUser);
