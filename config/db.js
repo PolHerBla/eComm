@@ -8,8 +8,6 @@ const dbName = process.env.DB_NAME;
 
 const port = process.env.port;
 
-
-
 const connection = mysql.createConnection({
   host: `${dbHost}`,
   user: `${dbUser}`,

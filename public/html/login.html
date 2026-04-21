@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Usuarios</title>
+    <link rel="stylesheet" href="../css/login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Panel de Control</h1>
+        <p class="subtitle">
+          Administra tu base de datos de usuarios con facilidad.
+        </p>
+      </header>
+
+      <main class="grid-container">
+        <section class="card">
+          <h2>Crear Token</h2>
+          <input
+            type="text"
+            id="inputEmail"
+            placeholder="tuemail@example.com"
+          />
+          <input type="password" id="inputPassword" placeholder="Contraseña" />
+          <button class="btn-primary" id="tokenButton">Crear token</button>
+        </section>
+
+        <div id="mensajeEstado" class="mensaje-oculto"></div>
+      </main>
+    </div>
+
+    <script src="../js/script.js"></script>
+  </body>
+</html>

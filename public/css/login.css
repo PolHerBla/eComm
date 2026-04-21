@@ -1,0 +1,125 @@
+/* Variables de estilo Apple-like */
+:root {
+  --bg-color: #f5f5f7;
+  --card-bg: #ffffff;
+  --text-main: #1d1d1f;
+  --text-secondary: #86868b;
+  --accent-blue: #0071e3;
+  --border-radius: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Centrado total en la pantalla */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Padding para dispositivos móviles */
+}
+
+/* Contenedor del login */
+.container {
+  width: 100%;
+  max-width: 400px; /* Ancho típico de un login */
+}
+
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Tarjeta del formulario */
+.card {
+  background: var(--card-bg);
+  padding: 32px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card h2 {
+  font-size: 1.2rem;
+  margin: 0 0 8px 0;
+  text-align: center;
+}
+
+/* Estilos de Inputs unificados */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d2d2d7;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #fbfbfd;
+  transition: var(--transition);
+  box-sizing: border-box; /* Asegura que el padding no desborde el ancho */
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+}
+
+/* Botón principal */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: var(--transition);
+  width: 100%;
+  background-color: var(--accent-blue);
+  color: white;
+  margin-top: 8px;
+}
+
+button:hover {
+  background-color: #0077ed;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+
+/* Estilos para el campo de estado (basado en el cuadro verde) */
+.mensaje-oculto {
+  display: none; /* Mantiene el campo oculto en la pantalla */
+  background-color: #00a389; /* Color verde similar al de la imagen */
+  color: white;
+  padding: 16px;
+  border-radius: var(--border-radius); /* Usa la variable de 12px que ya tienes definida */
+  margin-top: 16px;
+  text-align: center;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+/* Clase extra para mostrar el cuadro cuando sea necesario usando JS */
+.mostrar-mensaje {
+  display: block;
+}

@@ -1,0 +1,213 @@
+/* Reseteo y variables modernas */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+}
+
+body {
+  background-color: #fafafa;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 5%;
+}
+
+/* --- HERO & NAVBAR --- */
+.hero-section {
+  background-color: #efefef;
+  border-radius: 24px;
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4rem;
+  position: relative;
+  overflow: hidden;
+  /* Mantuve tu sombra roja interior */
+  box-shadow: inset 0px 0px 10px rgb(255, 37, 37);
+}
+
+/* Manejo correcto de la imagen de fondo con efectos */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: -10px; /* Expande un poco para que el blur no deje bordes blancos */
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background-image: url('https://i.pinimg.com/1200x/eb/fe/b8/ebfeb86c5180f3e105fe0d81d7aa254d.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px) brightness(0.4);
+  z-index: 1; /* Lo mantiene detrás del texto y logo */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  z-index: 10; /* Asegura que la navegación esté por encima del fondo */
+}
+
+.spacer {
+  width: 40px;
+}
+
+/* Unificación de estilos del logo */
+.brand-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+}
+
+.brand-logo img {
+  width: 180px;
+  height: 66px;
+  object-fit: contain; /* Evita que la imagen se deforme */
+}
+
+.menu-btn {
+  background: transparent;
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.menu-btn .bar {
+  width: 24px;
+  height: 2px;
+  background-color: #ffffff; /* Cambiado a blanco para contrastar con el fondo oscuro */
+  transition: width 0.3s ease;
+}
+
+.menu-btn:hover .bar:first-child {
+  width: 16px;
+}
+
+.hero-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 10; /* Asegura que el texto esté por encima del fondo */
+}
+
+.hero-content p {
+  color: white; /* Estilo que tenías en línea, movido al CSS */
+  font-size: 36px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+}
+
+/* --- SECCIÓN PRODUCTOS DESTACADOS --- */
+.featured-section {
+  margin-bottom: 4rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.view-all {
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.view-all:hover {
+  border-color: #1a1a1a;
+  color: #1a1a1a;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.product-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.product-image {
+  background-color: #f5f5f5;
+  height: 300px;
+  width: 100%;
+}
+
+.product-info {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-info h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.product-info p {
+  font-size: 1rem;
+  color: #888;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .hero-section {
+    border-radius: 16px;
+    height: 50vh;
+  }
+  .products-grid {
+    gap: 1.5rem;
+  }
+  .brand-logo img {
+    width: 140px; /* Reduce el tamaño del logo en móviles */
+    height: auto;
+  }
+}
