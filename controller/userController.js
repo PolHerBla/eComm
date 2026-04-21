@@ -2,10 +2,10 @@ const model = require("../model/userModel");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-exports.getAll = async (req, res) => {
+exports.getAllProducts = async (req, res) => {
   try {
-    const users = await model.getAll();
-    res.json({ users });
+    const users = await model.getAllProducts();
+    res.json({ products });
   } catch (err) {
     res
       .status(500)

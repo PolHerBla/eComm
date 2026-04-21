@@ -26,7 +26,6 @@ const campoEstado = document.getElementById('mensajeEstado');
 //         "Content-Type": "application/json",
 //       },
 //     });
-
 //     if (res.ok) {
 //       const data = await res.json();
 //       let userNames = data.users
