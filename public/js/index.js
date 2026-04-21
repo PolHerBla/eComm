@@ -1,5 +1,3 @@
-
-
 async function cargarProductos(params) {
     const token = cargarToken();
 
@@ -13,7 +11,19 @@ async function cargarProductos(params) {
         });
 
         if (response.ok) {
-            console.log(response);
+            const data = await response.json();
+            const products = data.products;
+
+            console.log(products);
+
+            products.forEach(product => {
+                const name = product.product_name;
+
+                const images = JSON.parse(product.product_images);
+                const splatterImg = images[0];
+
+                crearCard(name, splatterImg);
+            });
         } else {
             throw new Error("Error al comunicar con el servidor");
         }
@@ -24,9 +34,55 @@ async function cargarProductos(params) {
 
 function insertProducts() { }
 
-document.addEventListener("DOMContentLoaded", cargarProductos());
+document.addEventListener("DOMContentLoaded", cargarProductos);
 
 function cargarToken() {
     let token = localStorage.getItem("miTokenVip");
     return token;
 }
+
+function crearCard(name, splatterImg) {
+    const section = document.getElementById('products-div');
+
+    const card = document.createElement('article');
+    card.classList.add("product-card");
+    
+    const cardImg = document.createElement('img');
+    cardImg.classList.add("product-image");
+    cardImg.src = `${splatterImg}`;
+
+    const cardProductInfo = document.createElement('div');
+    cardProductInfo.classList.add('product-info');
+
+    const cardProductName = document.createElement('h3');
+
+    const cardProductPrice = document.createElement('p');
+
+    cardProductName.textContent = `${name}`;
+    
+    cardProductInfo.append(cardProductName);
+    card.append(cardImg);
+    card.append(cardProductInfo);
+
+    section.append(card);
+}
+
+
+
+/*
+<article class="product-card">
+    <div class="product-image"></div>
+    <div class="product-info">
+        <h3>Producto 01</h3>
+        <p>$99.00</p>
+    </div>
+</article>
+*/
+
+/*
+    1. Apuntar a el section/div
+    2. Crear el card del producte
+    3. Append al section div
+*/
+
+

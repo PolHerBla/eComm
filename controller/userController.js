@@ -4,7 +4,7 @@ require("dotenv").config();
 
 exports.getAllProducts = async (req, res) => {
   try {
-    const users = await model.getAllProducts();
+    const products = await model.getAllProducts();
     res.json({ products });
   } catch (err) {
     res

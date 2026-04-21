@@ -193,7 +193,7 @@ async function login() {
   const passwordInput = document.getElementById("inputPassword").value;
 
   try {
-    const response = await fetch("http://127.0.0.1:8080/api/users/login", {
+    const response = await fetch("http://127.0.0.1:8080/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -204,7 +204,7 @@ async function login() {
 
     if (response.ok) 
       {
-      localStorage.setItem("miTokenVIP", data.token);
+      localStorage.setItem("miTokenVip", data.token);
       console.log(data.token);
       campoEstado.innerHTML = "Inicio de sesión correcto";
       campoEstado.style.backgroundColor = "#00a389";
