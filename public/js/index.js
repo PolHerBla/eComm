@@ -3,7 +3,7 @@ function cargarToken() {
   return token;
 }
 
-function crearCard(name, splatterImg, imgHover) {
+function crearCard(id, name, splatterImg, imgHover) {
   const section = document.getElementById("products-div");
 
   const card = document.createElement("article");
@@ -30,6 +30,13 @@ function crearCard(name, splatterImg, imgHover) {
   cardImg.addEventListener("mouseleave", () => {
     cardImg.src = `${splatterImg}`;
   });
+
+  cardImg.addEventListener('click', () => {
+    window.location.href = `/html/producto.html?=${id}`;
+  });
+
+  // Modifica a traves de css el estil del mouse al pasar per sobre del card
+  card.style.cursor = "pointer";
 
   const cardProductInfo = document.createElement("div");
   cardProductInfo.classList.add("product-info");
@@ -66,13 +73,14 @@ async function cargarTodosProductos(params) {
       console.log(products);
 
       products.forEach((product) => {
+        const id = product.product_id;
         const name = product.product_name;
 
         const images = JSON.parse(product.product_images);
         const splatterImg = images[0];
         const imgHover = images[1] || images[0];
 
-        crearCard(name, splatterImg, imgHover);
+        crearCard(id, name, splatterImg, imgHover);
       });
     } else {
       throw new Error("Error al comunicar con el servidor");
@@ -101,7 +109,7 @@ async function cargarProducto(dataPass) {
         if (response.ok) {
           const data = response.json();
 
-          
+
         } else {
           throw new Error("Error al conseguir respuesta del servidor");
         }
