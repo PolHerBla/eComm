@@ -13,9 +13,9 @@ exports.getAllProducts = async (req, res) => {
   }
 };
 
-exports.getUserById = async (req, res) => {
+exports.getProductById = async (req, res) => {
   try {
-    const user = await model.getUserById(req.params.id);
+    const user = await model.getProductById(req.params.id);
     if (!user) {
       return res.status(404).json({ messaje: "Usuario no encontrado" });
     }
