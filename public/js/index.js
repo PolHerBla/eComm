@@ -23,16 +23,11 @@ function crearCard(id, name, splatterImg, imgHover) {
   cardImg.append(imagePrimary, imageHover);
 
   // Events que pertanyen a cada card i canvien la imatge al fer hover amb el mouse
-  cardImg.addEventListener("mouseenter", () => {
-    cardImg.src = `${imgHover}`;
-  });
+  changeOnHover(cardImg, imagePrimary, imagePrimary);
 
-  cardImg.addEventListener("mouseleave", () => {
-    cardImg.src = `${splatterImg}`;
-  });
 
   cardImg.addEventListener('click', () => {
-    window.location.href = `/html/producto.html?=${id}`;
+    window.location.href = `/html/product.html?id=${id}`;
   });
 
   // Modifica a traves de css el estil del mouse al pasar per sobre del card
@@ -90,33 +85,14 @@ async function cargarTodosProductos(params) {
   }
 }
 
-async function cargarProducto(dataPass) {
-    const product_id = dataPass.product_id;
-    const token = cargarToken();
+function changeOnHover(target, mainImg, secondaryImg) {
+  target.addEventListener("mouseenter", () => {
+    target.src = `${secondaryImg}`;
+  });
 
-    try {
-        const response = fetch("/product:id" , {
-          method : 'GET',
-          headers: {
-            Authorization: `bearer ${token}`,
-            "Content-type":"application/json"
-          },
-          body: {
-            id: `${product_id}`
-          }
-        })
-
-        if (response.ok) {
-          const data = response.json();
-
-
-        } else {
-          throw new Error("Error al conseguir respuesta del servidor");
-        }
-
-    } catch (err) {
-      console.log("Error al conseguir producto", err.message);
-    }
+  target.addEventListener("mouseleave", () => {
+    target.src = `${mainImg}`;
+  });
 }
 
 document.addEventListener("DOMContentLoaded", cargarTodosProductos);

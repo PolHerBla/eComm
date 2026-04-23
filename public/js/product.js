@@ -2,13 +2,22 @@ const prodImg = document.getElementById('imagen-producto');
 const prodName = document.getElementById('titulo-producto');
 const prodDesc = document.getElementById('descripcion-producto');
 
+function changeOnHover(target, mainImg, secondaryImg) {
+  target.addEventListener("mouseenter", () => {
+    target.src = `${secondaryImg}`;
+  });
+
+  target.addEventListener("mouseleave", () => {
+    target.src = `${mainImg}`;
+  });
+}
 
 function getToken() {
     const token = localStorage.getItem('miTokenVip');
     return token;
 }
 
-function cargarProducto() {
+async function cargarProducto() {
     // Objecte amb les propietats de la URL
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
@@ -26,7 +35,7 @@ function cargarProducto() {
 
         if (response.ok) {
 
-            const data = response.json();
+            const data = await response.json();
             const product = data.product;
 
             let productName = product.product_name;
@@ -35,9 +44,19 @@ function cargarProducto() {
 
             let images = JSON.parse(product.product_images);
 
-            prodImg.src = images[0] || images[1];
+            mainImg = images[0] || images[1];
+            hoverImg = images[1] || images[0];
+
+            prodImg.src = mainImg;
+
+            changeOnHover(prodImg, mainImg, hoverImg);
+
             prodName.innerText = productName;
             prodDesc.innerHTML = productDesc;
+
+            prodImg.addEventListener('', () => {
+
+            });
 
         } else {
             throw new Error("Error al pedir el producto");
@@ -47,3 +66,5 @@ function cargarProducto() {
         console.log("Error al conseguir el producto", err.message);
     }
 }
+
+document.addEventListener('DOMContentLoaded', cargarProducto);
