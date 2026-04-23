@@ -125,3 +125,34 @@
         font-size: 2rem;
     }
 }
+
+/* Aseguramos que el contenedor sea el eje de coordenadas para las imágenes */
+.main-image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ambas imágenes ocupan el 100% y se posicionan una sobre otra */
+.main-image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* La de hover es invisible por defecto */
+.img-hover {
+    opacity: 0;
+}
+
+/* Al hacer hover en el contenedor, invertimos las opacidades */
+.main-image-container:hover .img-primary {
+    opacity: 0;
+}
+
+.main-image-container:hover .img-hover {
+    opacity: 1;
+}

@@ -1,4 +1,6 @@
 const prodImg = document.getElementById('imagen-producto');
+const prodImgHover = document.getElementById("imagen-producto-hover");
+
 const prodName = document.getElementById('titulo-producto');
 const prodDesc = document.getElementById('descripcion-producto');
 
@@ -34,30 +36,24 @@ async function cargarProducto() {
         })
 
         if (response.ok) {
+          const data = await response.json();
+          const product = data.product;
 
-            const data = await response.json();
-            const product = data.product;
+          let productName = product.product_name;
+          let productDesc = product.product_desc;
+          let productExtra = product.product_extra_info;
 
-            let productName = product.product_name;
-            let productDesc = product.product_desc;
-            let productExtra = product.product_extra_info;
+          let images = JSON.parse(product.product_images);
 
-            let images = JSON.parse(product.product_images);
+          // Asignamos las dos imágenes
+          prodImg.src = images[0];
+          // Si no hay segunda imagen, usamos la primera por defecto
+          prodImgHover.src = images[1] || images[0];
 
-            mainImg = images[0] || images[1];
-            hoverImg = images[1] || images[0];
+          prodName.innerText = productName;
+          prodDesc.innerHTML = productDesc;
 
-            prodImg.src = mainImg;
-
-            changeOnHover(prodImg, mainImg, hoverImg);
-
-            prodName.innerText = productName;
-            prodDesc.innerHTML = productDesc;
-
-            prodImg.addEventListener('', () => {
-
-            });
-
+          prodImg.addEventListener("", () => {});
         } else {
             throw new Error("Error al pedir el producto");
         }

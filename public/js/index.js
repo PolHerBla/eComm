@@ -22,10 +22,6 @@ function crearCard(id, name, splatterImg, imgHover) {
 
   cardImg.append(imagePrimary, imageHover);
 
-  // Events que pertanyen a cada card i canvien la imatge al fer hover amb el mouse
-  changeOnHover(cardImg, imagePrimary, imagePrimary);
-
-
   cardImg.addEventListener('click', () => {
     window.location.href = `/html/product.html?id=${id}`;
   });
@@ -83,16 +79,6 @@ async function cargarTodosProductos(params) {
   } catch (error) {
     console.log("Error al cargar productos", error.message);
   }
-}
-
-function changeOnHover(target, mainImg, secondaryImg) {
-  target.addEventListener("mouseenter", () => {
-    target.src = `${secondaryImg}`;
-  });
-
-  target.addEventListener("mouseleave", () => {
-    target.src = `${mainImg}`;
-  });
 }
 
 document.addEventListener("DOMContentLoaded", cargarTodosProductos);
