@@ -1,3 +1,4 @@
+const { error } = require("node:console");
 const model = require("../model/userModel");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
@@ -13,11 +14,26 @@ exports.getAllProducts = async (req, res) => {
   }
 };
 
+exports.getProductTypeById = async (req,res) => {
+  try {
+    const productType = model.getProductTypeById(req.params.id);
+
+    if (!productType) {
+      return res.status(404).json({message: 'Tipo de producto no encotrado'});
+    }
+
+    res.json({ productType });
+
+  } catch (err) {
+    res.status(500).json({error: 'Error al encontrar usuario'});
+  }
+}
+
 exports.getProductById = async (req, res) => {
   try {
     const product = await model.getProductById(req.params.id);
     if (!product) {
-      return res.status(404).json({ messaje: "Usuario no encontrado" });
+      return res.status(404).json({ message: "Usuario no encontrado" });
     }
     res.json({ product });
   } catch (err) {

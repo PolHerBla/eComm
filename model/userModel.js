@@ -11,6 +11,11 @@ const models = {
     ]);
     return results[0];
   },
+  getProductTypeById: async(id) => {
+    const [results] = await db.query("SELECT * FROM product_types WHERE type_id = ?", [id]);
+    return results[0];
+  }
+  ,
   createProduct: async (userData) => {
     const [result] = await db.query(
       "INSERT INTO products",
