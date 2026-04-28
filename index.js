@@ -10,5 +10,5 @@ app.listen(port, () => {
 
 // Cuando alguien entra a http://localhost:8080/
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'html', 'login.html'));
+    res.sendFile(path.join(__dirname, 'public', 'html', 'ecommerce.html'));
 });

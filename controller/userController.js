@@ -1,6 +1,7 @@
 const { error } = require("node:console");
 const model = require("../model/userModel");
 const jwt = require("jsonwebtoken");
+const { response } = require("express");
 require("dotenv").config();
 
 exports.getAllProducts = async (req, res) => {
@@ -14,20 +15,20 @@ exports.getAllProducts = async (req, res) => {
   }
 };
 
-exports.getProductTypeById = async (req,res) => {
-  try {
-    const productType = model.getProductTypeById(req.params.id);
+// exports.getProductTypeById = async (req,res) => {
+//   try {
+//     const productType = model.getProductTypeById(req.params.id);
 
-    if (!productType) {
-      return res.status(404).json({message: 'Tipo de producto no encotrado'});
-    }
+//     if (!productType) {
+//       return res.status(404).json({message: 'Tipo de producto no encotrado'});
+//     }
 
-    res.json({ productType });
+//     res.json({ productType });
 
-  } catch (err) {
-    res.status(500).json({error: 'Error al encontrar usuario'});
-  }
-}
+//   } catch (err) {
+//     res.status(500).json({error: 'Error al encontrar usuario'});
+//   }
+// }
 
 exports.getProductById = async (req, res) => {
   try {
@@ -41,38 +42,59 @@ exports.getProductById = async (req, res) => {
   }
 };
 
-exports.createUser = async (req, res) => {
+exports.getAllArtists = async (req, res) => {
   try {
-    await model.createUser(req.body);
-    res.status(201).json({ message: "Usuario creado correctamente" });
+    const artists = await model.getArtists();
+    res.json({ artists });
   } catch (error) {
-    res.status(500).json({ error: "Error al crear usuario" });
+    res.status(500).json({error: "Error al conseguir artistas", details: error.message})
   }
-};
+}
 
-exports.updateUser = async (req, res) => {
+exports.getProductsByArtist = async (req, res) => {
   try {
-    const response = await model.updateUser(req.params.id, req.body);
-    if ((response.affectedRows = 0)) {
-      return res.status(404).json({ message: "Error al encontrar usuario" });
+    const products = await model.getProductsByArtist(req.params.artist_id);
+    if(!products) {
+      return res.status(404).json({message: "Productos no encontrados"});
     }
-    res.json({ message: "Usuario actualizado correctamente" });
+    res.json({ products });
   } catch (error) {
-    res.status(500).json({ error: "Error al actualizar usuario" });
+    res.status(500).json({error: "Error al encontrar productos", details: error.message})
   }
-};
+}
 
-exports.deleteUser = async (req, res) => {
-  try {
-    const response = await model.deleteUser(req.params.id);
-    if (response.affectedRows === 0) {
-      return res.status(404).json({ message: "Usuario no encotrado" });
-    }
-    res.json({ message: "Usuario eliminado correctamente" });
-  } catch (error) {
-    res.status(500).json({ error: "Error al eliminar usuario" });
-  }
-};
+// exports.createUser = async (req, res) => {
+//   try {
+//     await model.createUser(req.body);
+//     res.status(201).json({ message: "Usuario creado correctamente" });
+//   } catch (error) {
+//     res.status(500).json({ error: "Error al crear usuario" });
+//   }
+// };
+
+// exports.updateUser = async (req, res) => {
+//   try {
+//     const response = await model.updateUser(req.params.id, req.body);
+//     if ((response.affectedRows = 0)) {
+//       return res.status(404).json({ message: "Error al encontrar usuario" });
+//     }
+//     res.json({ message: "Usuario actualizado correctamente" });
+//   } catch (error) {
+//     res.status(500).json({ error: "Error al actualizar usuario" });
+//   }
+// };
+
+// exports.deleteUser = async (req, res) => {
+//   try {
+//     const response = await model.deleteUser(req.params.id);
+//     if (response.affectedRows === 0) {
+//       return res.status(404).json({ message: "Usuario no encotrado" });
+//     }
+//     res.json({ message: "Usuario eliminado correctamente" });
+//   } catch (error) {
+//     res.status(500).json({ error: "Error al eliminar usuario" });
+//   }
+// };
 
 exports.login = async (req, res) => {
   const user = req.body;

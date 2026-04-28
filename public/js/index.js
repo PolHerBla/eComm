@@ -1,8 +1,3 @@
-function cargarToken() {
-  let token = localStorage.getItem("miTokenVip");
-  return token;
-}
-
 function crearCard(id, name, splatterImg, imgHover) {
   const section = document.getElementById("products-div");
 
@@ -46,14 +41,12 @@ function crearCard(id, name, splatterImg, imgHover) {
 }
 
 async function cargarTodosProductos(params) {
-  const token = cargarToken();
 
   try {
     const response = await fetch("/api/productos", {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-type": "application/json",
+        "Content-type": "application/json"
       },
     });
 

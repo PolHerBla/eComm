@@ -5,9 +5,11 @@ const jwt = require("../middleware/webToken");
 
 router.post("/login", controller.login);
 
-router.get("/productos", jwt, controller.getAllProducts);
-router.get("/productos/:id", jwt, controller.getProductById);
-router.get("/tipoProducto/:id", jwt, controller.getProductTypeById);
+router.get("/productos", controller.getAllProducts);
+router.get("/productos/:id", controller.getProductById);
+router.get("/productos/artist/:artist_id", controller.getProductsByArtist);
+// router.get("/tipoProducto/:id", jwt, controller.getProductTypeById);
+router.get("/artists", controller.getAllArtists);
 // router.post("/", jwt, controller.createUser);
 // router.put("/:id", jwt, controller.updateUser);
 // router.delete("/:id", jwt, controller.deleteUser);

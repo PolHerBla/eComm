@@ -14,23 +14,15 @@ function changeOnHover(target, mainImg, secondaryImg) {
   });
 }
 
-function getToken() {
-    const token = localStorage.getItem('miTokenVip');
-    return token;
-}
-
 async function cargarProducto() {
     // Objecte amb les propietats de la URL
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
 
-    const token = getToken();
-
     try {
         const response = await fetch(`/api/productos/${id}`, {
             method: 'GET',
             headers: {
-                Authorization: `bearer ${token}`,
                 "Content-type":"application/json"
             }
         })
