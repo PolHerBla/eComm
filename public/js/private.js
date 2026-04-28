@@ -1,3 +1,7 @@
+const token = localStorage.getItem('miTokenVip');
+
+const boton_crear = document.getElementById('btnCrearProducto');
+
 async function verificarAcceso() {
     const token = localStorage.getItem("miTokenVip");
 
@@ -96,6 +100,44 @@ async function cargarTiposProductos() {
     }
 }
 
+async function crearProducto() {
+
+    const nuevo_producto = {
+        type: document.getElementById('crear-tipo').value,
+        name: document.getElementById('crear-nombre').value,
+        desc: document.getElementById('crear-desc').value,
+        extra: document.getElementById('crear-extra').value,
+        artist: document.getElementById('crear-artista').value,
+        image: document.getElementById('crear-imagen').value
+    }
+
+    try {
+        const result = await fetch('/api/productos', {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(nuevo_producto)
+        });
+
+        const data = await result.json();
+
+        if (!result.ok) {
+            throw new Error('Error en la petición');
+            console.log(data)
+            return;
+        }
+
+        console.log('Usuario creado correctamente');
+
+    } catch (error) {
+        console.log('Error al crear un nuevo producto', error.message);
+    }
+
+}
+
 
 document.addEventListener('DOMContentLoaded', cargarTiposProductos)
 document.addEventListener('DOMContentLoaded', cargarArtistas)
+boton_crear.addEventListener('click', crearProducto);

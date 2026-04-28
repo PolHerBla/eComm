@@ -59,14 +59,17 @@ exports.getProductsByArtist = async (req, res) => {
   }
 }
 
-// exports.createUser = async (req, res) => {
-//   try {
-//     await model.createUser(req.body);
-//     res.status(201).json({ message: "Usuario creado correctamente" });
-//   } catch (error) {
-//     res.status(500).json({ error: "Error al crear usuario" });
-//   }
-// };
+exports.createProduct = async (req, res) => {
+  try {
+    const response = await model.createProduct(req.body);
+    if (response.affectedRows = 0) {
+      return res.status(404).json({mesasge: 'No se ha creado el usuario'})
+    }
+    res.status(201).json({ message: "Usuario creado correctamente" });
+  } catch (error) {
+    res.status(500).json({ error: "Error al crear usuario" });
+  }
+};
 
 // exports.updateUser = async (req, res) => {
 //   try {

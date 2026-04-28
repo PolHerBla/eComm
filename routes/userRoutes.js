@@ -10,7 +10,7 @@ router.get("/productos/:id", controller.getProductById);
 router.get("/productos/artist/:artist_id", controller.getProductsByArtist);
 router.get("/product-types", controller.getProductTypes);
 router.get("/artists", controller.getAllArtists);
-// router.post("/", jwt, controller.createUser);
+router.post("/productos", jwt, controller.createProduct);
 // router.put("/:id", jwt, controller.updateUser);
 // router.delete("/:id", jwt, controller.deleteUser);
 

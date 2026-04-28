@@ -16,13 +16,20 @@ const models = {
     return results;
   }
   ,
-  // createProduct: async (userData) => {
-  //   const [result] = await db.query(
-  //     "INSERT INTO products",
-  //     [userData.nombre, userData.apellido1, userData.apellido2, userData.email],
-  //   );
-  //   return result;
-  // },
+  createProduct: async (product_data) => {
+    const [result] = await db.query(
+      "insert into products (product_type, product_name, product_desc, product_extra_info, product_artist, product_images) values (?, ?, ?, ?, ?, [?])",
+      [
+        product_data.type,
+        product_data.name,
+        product_data.desc,
+        product_data.extra,
+        product_data.artist,
+        product_data.image,
+      ],
+    );
+    return result;
+  },
   // updateProduct: async (id, userData) => {
   //   const [result] = await db.query(
   //     "UPDATE products SET nombre = ? WHERE usr_id = ?",

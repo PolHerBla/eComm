@@ -1,10 +1,16 @@
 /* Heredamos las variables de login.css */
+/* 1. SOBRESCRIBIR EL COMPORTAMIENTO DEL LOGIN */
+body {
+    display: block; /* Rompe el centrado vertical estricto del login */
+    padding: 40px 20px 80px 20px; /* Arriba, derecha, ABAJO (tu margen de seguridad), izquierda */
+}
 
+/* 2. AJUSTAR EL CONTENEDOR PRINCIPAL */
 .container-full {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    height: 100%;
+    /* height: 100%; <-- ELIMINA ESTA LÍNEA */
 }
 
 /* Layout en cuadrícula para las 3 acciones */
@@ -20,29 +26,24 @@
 .card {
     display: flex;
     flex-direction: column;
-    height: 100%; /* Asegura que la tarjeta ocupa el 100% de la celda del grid */
+    height: 100%; 
+    box-sizing: border-box; /* <-- LA SOLUCIÓN: El padding ya no se sumará a la altura total */
 }
 
-/* 3. FORMULARIOS QUE RELLENAN ESPACIO */
-.card form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px; /* Aumentamos un poco el espacio para que respiren mejor */
-    flex-grow: 1; /* Hace que el formulario se expanda para llenar el espacio vacío de la tarjeta */
-}
-
-/* 4. EMPUJAR BOTONES AL FONDO */
-.card form button {
-    margin-top: auto; /* Al estar en un flex-column, empuja el botón hacia abajo del todo */
-    padding: 16px; /* Unificamos el tamaño del botón */
+/* 3. EMPUJAR BOTONES AL FONDO */
+/* Al ser flex-column el padre (.card), margin-top: auto empuja el botón hacia abajo del todo */
+.card button {
+    margin-top: auto; 
+    padding: 16px; 
     font-size: 1rem;
 }
 
-/* 5. UNIFICAR TODOS LOS INPUTS Y TEXTAREAS */
-/* Añadimos explícitamente type="number" y sobreescribimos cualquier estilo heredado raro */
-.card form input[type="text"],
-.card form input[type="number"],
-.card form textarea {
+/* 4. UNIFICAR TODOS LOS INPUTS, SELECTS Y TEXTAREAS */
+.card input[type="text"],
+.card input[type="number"],
+.card input[type="url"],
+.card select,
+.card textarea {
     width: 100%;
     padding: 12px 16px;
     border: 1px solid #d2d2d7;
@@ -52,6 +53,21 @@
     box-sizing: border-box; /* Vital para que el padding no engorde el input */
     font-family: inherit;
     transition: all 0.3s ease;
+}
+
+/* 5. ESTADO FOCUS */
+.card input:focus,
+.card textarea:focus,
+.card select:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+}
+
+.card textarea {
+    min-height: 120px;
+    resize: vertical;
 }
 
 .card form input:focus,
