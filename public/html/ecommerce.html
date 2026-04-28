@@ -7,21 +7,36 @@
     <link rel="stylesheet" href="../css/ecomm.css" />
     <script src="../js/index.js" defer></script>
   </head>
-  <body>
+  <body id="top">
     <div class="container">
-      
       <header class="hero-section">
         <nav class="navbar">
           <div class="spacer"></div>
-          
+
           <div class="brand-logo">
-            <img src="https://tienda-stickyma.com/cdn/shop/files/etiqueta.png?v=1743072747&width=520" alt="Logo de la marca" />
-          </div> <button class="menu-btn" aria-label="Menú">
-            <div class="bar"></div>
-            <div class="bar"></div>
-          </button>
+            <img
+              src="https://tienda-stickyma.com/cdn/shop/files/etiqueta.png?v=1743072747&width=520"
+              alt="Logo de la marca"
+            />
+          </div>
+
+          <div class="menu-wrapper">
+            <button class="menu-btn" aria-label="Menú">
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </button>
+
+            <div class="dropdown-menu" id="dropdownMenu">
+              <ul class="menu-links">
+                <li><a href="#top">Inicio</a></li>
+                <li><a href="#products-div">Productos</a></li>
+                <li><a href="#">Artistas</a></li>
+                <li><a href="/html/login.html">Mi zona de gestión</a></li>
+              </ul>
+            </div>
+          </div>
         </nav>
-        
+
         <div class="hero-content">
           <p>Nueva Colección</p>
         </div>
@@ -34,8 +49,7 @@
             <a href="#" class="view-all">Ver todo</a>
           </div>
 
-          <div class="products-grid" id="products-div">
-          </div>
+          <div class="products-grid" id="products-div"></div>
         </section>
       </main>
     </div>

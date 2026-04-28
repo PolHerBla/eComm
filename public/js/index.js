@@ -1,3 +1,5 @@
+
+
 function crearCard(id, name, splatterImg, imgHover) {
   const section = document.getElementById("products-div");
 
@@ -75,5 +77,27 @@ async function cargarTodosProductos(params) {
 }
 
 document.addEventListener("DOMContentLoaded", cargarTodosProductos);
+
+// JS per al CSS
+
+// Lógica para el menú desplegable
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.querySelector(".menu-btn");
+  const dropdownMenu = document.getElementById("dropdownMenu");
+
+  // Alternar el menú al hacer clic en el botón
+  menuBtn.addEventListener("click", (event) => {
+    // Evitamos que el clic se propague al documento (útil para el siguiente paso)
+    event.stopPropagation(); 
+    dropdownMenu.classList.toggle("show-menu");
+  });
+
+  // Cerrar el menú si el usuario hace clic en cualquier parte fuera de él
+  document.addEventListener("click", (event) => {
+    if (!dropdownMenu.contains(event.target) && !menuBtn.contains(event.target)) {
+      dropdownMenu.classList.remove("show-menu");
+    }
+  });
+});
 
 

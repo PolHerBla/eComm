@@ -1,0 +1,135 @@
+/* Heredamos las variables de login.css */
+
+.container-full {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+}
+
+/* Layout en cuadrícula para las 3 acciones */
+/* 1. IGUALAR ALTURAS DE LAS TARJETAS */
+.management-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    align-items: stretch; /* CAMBIO CLAVE: Obliga a todas las tarjetas a tener la misma altura máxima */
+}
+
+/* 2. ESTRUCTURA FLEXIBLE DENTRO DE LA TARJETA */
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Asegura que la tarjeta ocupa el 100% de la celda del grid */
+}
+
+/* 3. FORMULARIOS QUE RELLENAN ESPACIO */
+.card form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Aumentamos un poco el espacio para que respiren mejor */
+    flex-grow: 1; /* Hace que el formulario se expanda para llenar el espacio vacío de la tarjeta */
+}
+
+/* 4. EMPUJAR BOTONES AL FONDO */
+.card form button {
+    margin-top: auto; /* Al estar en un flex-column, empuja el botón hacia abajo del todo */
+    padding: 16px; /* Unificamos el tamaño del botón */
+    font-size: 1rem;
+}
+
+/* 5. UNIFICAR TODOS LOS INPUTS Y TEXTAREAS */
+/* Añadimos explícitamente type="number" y sobreescribimos cualquier estilo heredado raro */
+.card form input[type="text"],
+.card form input[type="number"],
+.card form textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #d2d2d7;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #fbfbfd;
+    box-sizing: border-box; /* Vital para que el padding no engorde el input */
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.card form input:focus,
+.card form textarea:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+}
+
+.card form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Ajuste del HR para que no rompa la estructura flex */
+.card form hr {
+    border: 0;
+    border-top: 1px solid #d2d2d7;
+    margin: 8px 0;
+    width: 100%;
+}
+
+/* Ajustes en las tarjetas */
+.card h2 {
+    text-align: left;
+    margin-bottom: 20px;
+    color: var(--text-main);
+    border-bottom: 2px solid var(--bg-color);
+    padding-bottom: 10px;
+}
+
+/* Estilos de formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #d2d2d7;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #fbfbfd;
+    font-family: inherit;
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Variaciones de botones para distinguir acciones */
+.btn-secondary {
+    background-color: #515154;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #ff3b30;
+    color: white;
+}
+
+.warning-text {
+    font-size: 0.85rem;
+    color: #ff3b30;
+    margin-bottom: 10px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #d2d2d7;
+    margin: 10px 0;
+}
