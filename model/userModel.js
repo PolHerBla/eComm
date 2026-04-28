@@ -11,9 +11,9 @@ const models = {
     ]);
     return results[0];
   },
-  getProductTypeById: async(id) => {
-    const [results] = await db.query("SELECT * FROM product_types WHERE type_id = ?", [id]);
-    return results[0];
+  getProductTypes: async () => {
+    const [results] = await db.query("SELECT * FROM product_types");
+    return results;
   }
   ,
   // createProduct: async (userData) => {

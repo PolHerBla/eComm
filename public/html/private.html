@@ -1,54 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gestión de eCommerce - Sticky M.A</title>
-    <link rel="stylesheet" href="../css/login.css">
-    <link rel="stylesheet" href="../css/gestion.css">
-    <link rel="stylesheet" href="../css/private.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/gestion.css" />
+    <link rel="stylesheet" href="../css/private.css" />
+    <script src="../js/private.js" defer></script>
+  </head>
+  <body>
     <div class="container-full">
-        <header>
-            <h1>Panel de Gestión</h1>
-            <p class="subtitle">Administra los productos de la tienda</p>
-            <a href="ecommerce.html" class="back-link">← Volver a la tienda</a>
-        </header>
+      <header>
+        <h1>Panel de Gestión</h1>
+        <p class="subtitle">Administra los productos de la tienda</p>
+        <a href="ecommerce.html" class="back-link">← Volver a la tienda</a>
+      </header>
 
-        <main class="management-grid">
-            <section class="card">
-                <h2>Crear Producto</h2>
-                <form>
-                    <input type="text" placeholder="Nombre del producto" required>
-                    <input type="number" placeholder="Precio (€)" step="0.01" required>
-                    <input type="text" placeholder="URL Imágenes (JSON)" required>
-                    <textarea placeholder="Descripción del producto"></textarea>
-                    <button type="submit" class="btn-primary">Añadir Producto</button>
-                </form>
-            </section>
+      <main class="management-grid">
+        <section class="card">
+          <h2>Crear Producto</h2>
 
-            <section class="card">
-                <h2>Modificar Producto</h2>
-                <form>
-                    <input type="number" placeholder="ID del producto a buscar" class="search-input" required>
-                    <hr>
-                    <input type="text" placeholder="Nuevo nombre">
-                    <input type="number" placeholder="Nuevo precio" step="0.01">
-                    <textarea placeholder="Nueva descripción"></textarea>
-                    <button type="submit" class="btn-secondary">Actualizar Datos</button>
-                </form>
-            </section>
+          <select id="crear-tipo">
+            <option value="" disabled selected>
+              Selecciona el tipo de producto
+            </option>
+          </select>
 
-            <section class="card delete-card">
-                <h2>Eliminar Producto</h2>
-                <p class="warning-text">Esta acción no se puede deshacer.</p>
-                <form>
-                    <input type="number" placeholder="ID del producto" required>
-                    <button type="submit" class="btn-danger">Eliminar permanentemente</button>
-                </form>
-            </section>
-        </main>
+          <input type="text" id="crear-nombre" placeholder="Nombre" />
+
+          <textarea id="crear-desc" placeholder="Descripción"></textarea>
+
+          <textarea
+            id="crear-extra"
+            placeholder="Información extra (Ej: Materiales, cuidados...)"
+          ></textarea>
+
+          <select id="crear-artista">
+            <option value="" disabled selected>Selecciona el artista</option>
+          </select>
+
+          <input
+            type="url"
+            id="crear-imagen"
+            placeholder="Link de la imagen principal"
+          />
+
+          <button class="btn-primary" id="btnCrearProducto">
+            Añadir Producto
+          </button>
+        </section>
+
+        <section class="card">
+          <h2>Modificar Producto</h2>
+          <form>
+            <input
+              type="number"
+              placeholder="ID del producto a buscar"
+              class="search-input"
+              required
+            />
+            <hr />
+            <input type="text" placeholder="Nuevo nombre" />
+            <input type="number" placeholder="Nuevo precio" step="0.01" />
+            <textarea placeholder="Nueva descripción"></textarea>
+            <button type="submit" class="btn-secondary">
+              Actualizar Datos
+            </button>
+          </form>
+        </section>
+
+        <section class="card delete-card">
+          <h2>Eliminar Producto</h2>
+          <p class="warning-text">Esta acción no se puede deshacer.</p>
+          <form>
+            <input type="number" placeholder="ID del producto" required />
+            <button type="submit" class="btn-danger">
+              Eliminar permanentemente
+            </button>
+          </form>
+        </section>
+      </main>
     </div>
-</body>
+  </body>
 </html>

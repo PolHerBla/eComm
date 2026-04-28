@@ -15,20 +15,16 @@ exports.getAllProducts = async (req, res) => {
   }
 };
 
-// exports.getProductTypeById = async (req,res) => {
-//   try {
-//     const productType = model.getProductTypeById(req.params.id);
+exports.getProductTypes = async (req,res) => {
+  try {
+    const productTypes = await model.getProductTypes();
 
-//     if (!productType) {
-//       return res.status(404).json({message: 'Tipo de producto no encotrado'});
-//     }
+    res.json({ productTypes });
 
-//     res.json({ productType });
-
-//   } catch (err) {
-//     res.status(500).json({error: 'Error al encontrar usuario'});
-//   }
-// }
+  } catch (err) {
+    res.status(500).json({error: 'Error al encontrar tipos de productos'});
+  }
+}
 
 exports.getProductById = async (req, res) => {
   try {
@@ -115,4 +111,8 @@ exports.login = async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Error al iniciar sesion" });
   }
+};
+
+exports.verifySession = async (req, res) => {
+  res.status(200).json({message: 'Sesión iniciada correctamente'});
 };

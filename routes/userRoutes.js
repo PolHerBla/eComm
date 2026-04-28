@@ -8,10 +8,14 @@ router.post("/login", controller.login);
 router.get("/productos", controller.getAllProducts);
 router.get("/productos/:id", controller.getProductById);
 router.get("/productos/artist/:artist_id", controller.getProductsByArtist);
-// router.get("/tipoProducto/:id", jwt, controller.getProductTypeById);
+router.get("/product-types", controller.getProductTypes);
 router.get("/artists", controller.getAllArtists);
 // router.post("/", jwt, controller.createUser);
 // router.put("/:id", jwt, controller.updateUser);
 // router.delete("/:id", jwt, controller.deleteUser);
+
+
+// Verica si el usuari te token, per tant té sessió iniciada
+router.get("/verify-session", jwt, controller.verifySession);
 
 module.exports = router;
