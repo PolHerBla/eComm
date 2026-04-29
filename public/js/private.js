@@ -189,7 +189,8 @@ async function crearProducto() {
             return;
         }
 
-        console.log("Usuario creado correctamente");
+        console.log("Producto creado correctamente");
+        cargarProductosDesplegables();
     } catch (error) {
         console.log("Error al crear un nuevo producto", error.message);
     }
@@ -201,21 +202,20 @@ async function eliminarProducto() {
 
     try {
         const response = await fetch(`/api/productos/delete/${product_id}`, {
-            method: 'DELETE',
+            method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`,
-                "Content-type":"application/json"
             }
         });
 
-        if (!response.ok) 
+        if (response.ok) 
         {
-                throw new Error("Error al hacer la petición de eliminación");
+            alert('Producto eliminado correctamente');
+            cargarProductosDesplegables();
         }
         else
         {
-            const data = await response.json();
-            console.log(data.message);
+            console.log('Usuario eliminado correctamente');
         }
 
     } catch (error) {
@@ -223,8 +223,13 @@ async function eliminarProducto() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', cargarTiposProductos)
-document.addEventListener('DOMContentLoaded', cargarArtistas)
-document.addEventListener('DOMContentLoaded', cargarProductosDesplegables)
+function cargarTodo() {
+    cargarArtistas();
+    cargarProductosDesplegables();
+    cargarTiposProductos();
+}
+
+
+document.addEventListener('DOMContentLoaded', cargarTodo)
 boton_crear.addEventListener('click', crearProducto);
 boton_eliminar.addEventListener('click', eliminarProducto);

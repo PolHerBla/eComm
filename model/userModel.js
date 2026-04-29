@@ -31,7 +31,7 @@ const models = {
     return result;
   },
   deleteProduct: async (id) => {
-    const [result] = db.query("DELETE FROM products WHERE product_id = ?", [id]);
+    const [result] = await db.query("DELETE FROM products WHERE product_id = ?", [id]);
     return result;
   },
   // updateProduct: async (id, userData) => {
