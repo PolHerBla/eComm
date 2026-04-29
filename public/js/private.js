@@ -1,4 +1,5 @@
 const boton_crear = document.getElementById('btnCrearProducto');
+const boton_eliminar = document.getElementById('btnEliminarProducto')
 
 async function verificarAcceso() {
     const token = localStorage.getItem("miTokenVip");
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', verificarAcceso);
 
 async function cargarArtistas() {
     const desplegable = document.getElementById('crear-artista');
+    const desplegableUpdate = document.getElementById('modificar-artista');
 
     try {
         const response = await fetch('/api/artists', {
@@ -56,19 +58,23 @@ async function cargarArtistas() {
                 artistOption.value = artist.artist_id;
                 artistOption.innerHTML = artist.artist_name;
 
-                desplegable.append(artistOption);
+                desplegable.append(artistOption.cloneNode(true));
+                desplegableUpdate.append(artistOption);
             });
 
         }
 
     } catch (error) {
         console.log('Error al conseguir los artistas', error.message)
+        desplegable.innerHTML = '<option value="" disabled selected>Error al cargar</option>';
+        desplegableUpdate.innerHTML = '<option value="" disabled selected>Error al cargar</option>';
     }
 
 }
 
 async function cargarTiposProductos() {
     const desplegableTipos = document.getElementById("crear-tipo");
+    const desplegableTiposUpdate = document.getElementById('modificar-tipo');
 
     try {
         const response = await fetch("/api/product-types", {
@@ -90,11 +96,60 @@ async function cargarTiposProductos() {
                 artistOption.value = tipo.type_id;
                 artistOption.innerHTML = tipo.type_name;
 
-                desplegableTipos.append(artistOption);
+                // Clona el element, ja que un element del DOM no pot estar a dos llocs simultàneament
+                desplegableTipos.append(artistOption.cloneNode(true));
+                desplegableTiposUpdate.append(artistOption);
             });
         }
     } catch (error) {
         console.log("Error al conseguir los artistas", error.message);
+        desplegableTipos.innerHTML = '<option value="" disabled selected>Error al cargar</option>';
+        desplegableTiposUpdate.innerHTML = '<option value="" disabled selected>Error al cargar</option>';
+    }
+}
+
+// Añade esta función en tu private.js
+async function cargarProductosDesplegables() {
+    const selectModificar = document.getElementById('modificar-id');
+    const selectEliminar = document.getElementById('eliminar-id');
+
+    try {
+        // Hacemos la petición a tu ruta del backend que devuelve todos los productos
+        // Nota: Asegúrate de que esta URL coincide con la ruta real en tu userRoutes.js
+        const respuesta = await fetch('/api/productos'); 
+        
+        if (!respuesta.ok) throw new Error('Error al obtener los productos');
+        
+        const data = await respuesta.json();
+
+        const productos = data.products;
+
+        // Limpiamos los selects por si tenían datos viejos y añadimos la opción por defecto
+        const opcionPorDefecto = '<option value="" disabled selected>Selecciona un producto</option>';
+        selectModificar.innerHTML = opcionPorDefecto;
+        selectEliminar.innerHTML = opcionPorDefecto;
+
+        // Iteramos sobre el array de productos que nos devolvió la base de datos
+        productos.forEach(producto => {
+            // Creamos una nueva etiqueta <option>
+            const opcion = document.createElement('option');
+            
+            // El 'value' será el ID real de la base de datos (lo que enviaremos al backend)
+            opcion.value = producto.product_id; 
+            
+            // El texto visible será el nombre del producto (lo que lee el usuario)
+            opcion.textContent = producto.product_name; 
+
+            // Añadimos esta opción a ambos menús desplegables
+            // Usamos cloneNode(true) porque un mismo elemento DOM no puede estar en dos sitios a la vez
+            selectModificar.appendChild(opcion.cloneNode(true));
+            selectEliminar.appendChild(opcion);
+        });
+
+    } catch (error) {
+        console.error("Hubo un problema cargando los desplegables:", error);
+        selectModificar.innerHTML = '<option value="" disabled selected>Error al cargar</option>';
+        selectEliminar.innerHTML = '<option value="" disabled selected>Error al cargar</option>';
     }
 }
 
@@ -141,9 +196,35 @@ async function crearProducto() {
 }
 
 async function eliminarProducto() {
-    const prdouct_id = document.getElementById().value;
+    const product_id = document.getElementById("eliminar-id").value;
+    const token = localStorage.getItem("miTokenVip");
+
+    try {
+        const response = await fetch(`/api/productos/delete/${product_id}`, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-type":"application/json"
+            }
+        });
+
+        if (!response.ok) 
+        {
+                throw new Error("Error al hacer la petición de eliminación");
+        }
+        else
+        {
+            const data = await response.json();
+            console.log(data.message);
+        }
+
+    } catch (error) {
+        console.log(error.message);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', cargarTiposProductos)
 document.addEventListener('DOMContentLoaded', cargarArtistas)
+document.addEventListener('DOMContentLoaded', cargarProductosDesplegables)
 boton_crear.addEventListener('click', crearProducto);
+boton_eliminar.addEventListener('click', eliminarProducto);

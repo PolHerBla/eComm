@@ -84,7 +84,7 @@ exports.createProduct = async (req, res) => {
 //   }
 // };
 
-exports.deleteUser = async (req, res) => {
+exports.deleteProduct = async (req, res) => {
   try {
     const response = await model.deleteProduct(req.params.id);
     if (response.affectedRows === 0) {

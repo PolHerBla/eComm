@@ -51,35 +51,47 @@
           </button>
         </section>
 
-        <section class="card">
-          <h2>Modificar Producto</h2>
-          <form>
-            <input
-              type="number"
-              placeholder="ID del producto a buscar"
-              class="search-input"
-              required
-            />
-            <hr />
-            <input type="text" placeholder="Nuevo nombre" />
-            <input type="number" placeholder="Nuevo precio" step="0.01" />
-            <textarea placeholder="Nueva descripción"></textarea>
-            <button type="submit" class="btn-secondary">
-              Actualizar Datos
-            </button>
-          </form>
-        </section>
+<!-- SECCIÓN: MODIFICAR PRODUCTO -->
+<section class="card">
+    <h2>Modificar Producto</h2>
+    
+    <!-- Select dinámico para elegir QUÉ producto modificar -->
+    <select id="modificar-id">
+        <option value="" disabled selected>Cargando productos...</option>
+    </select>
+    
+    <hr>
+    
+    <!-- Selects fijos (iguales que en Crear) -->
+    <select id="modificar-tipo">
+        <option value="" disabled selected>Nuevo tipo de producto</option>
+    </select>
 
-        <section class="card delete-card">
-          <h2>Eliminar Producto</h2>
-          <p class="warning-text">Esta acción no se puede deshacer.</p>
-          <form>
-            <input type="number" placeholder="ID del producto" required />
-            <button type="submit" class="btn-danger">
-              Eliminar permanentemente
-            </button>
-          </form>
-        </section>
+    <input type="text" id="modificar-nombre" placeholder="Nuevo nombre">
+    <textarea id="modificar-desc" placeholder="Nueva descripción"></textarea>
+    <textarea id="modificar-extra" placeholder="Nueva información extra"></textarea>
+
+    <select id="modificar-artista">
+        <option value="" disabled selected>Nuevo artista</option>
+    </select>
+
+    <input type="url" id="modificar-imagen" placeholder="Nuevo link de imagen">
+    
+    <button class="btn-secondary" id="btnModificarProducto">Actualizar Datos</button>
+</section>
+
+<!-- SECCIÓN: ELIMINAR PRODUCTO -->
+<section class="card delete-card">
+    <h2>Eliminar Producto</h2>
+    <p class="warning-text">Esta acción no se puede deshacer.</p>
+    
+    <!-- Select dinámico para elegir qué producto eliminar -->
+    <select id="eliminar-id">
+        <option value="" disabled selected>Cargando productos...</option>
+    </select>
+    
+    <button class="btn-danger" id="btnEliminarProducto">Eliminar permanentemente</button>
+</section>
       </main>
     </div>
   </body>
