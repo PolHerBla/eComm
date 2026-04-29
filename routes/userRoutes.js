@@ -12,7 +12,7 @@ router.get("/product-types", controller.getProductTypes);
 router.get("/artists", controller.getAllArtists);
 router.post("/productos", jwt, controller.createProduct);
 // router.put("/:id", jwt, controller.updateUser);
-// router.delete("/:id", jwt, controller.deleteUser);
+router.delete("/productos/delete/:id", jwt, controller.deleteUser);
 
 
 // Verica si el usuari te token, per tant té sessió iniciada

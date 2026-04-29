@@ -18,7 +18,7 @@ const models = {
   ,
   createProduct: async (product_data) => {
     const [result] = await db.query(
-      "insert into products (product_type, product_name, product_desc, product_extra_info, product_artist, product_images) values (?, ?, ?, ?, ?, [?])",
+      "insert into products (product_type, product_name, product_desc, product_extra_info, product_artist, product_images) values (?, ?, ?, ?, ?, ?)",
       [
         product_data.type,
         product_data.name,
@@ -28,6 +28,10 @@ const models = {
         product_data.image,
       ],
     );
+    return result;
+  },
+  deleteProduct: async (id) => {
+    const [result] = db.query("DELETE FROM productos WHERE product_id = ?", [id]);
     return result;
   },
   // updateProduct: async (id, userData) => {

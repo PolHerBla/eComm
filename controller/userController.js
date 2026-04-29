@@ -60,6 +60,7 @@ exports.getProductsByArtist = async (req, res) => {
 }
 
 exports.createProduct = async (req, res) => {
+
   try {
     const response = await model.createProduct(req.body);
     if (response.affectedRows = 0) {
@@ -83,17 +84,17 @@ exports.createProduct = async (req, res) => {
 //   }
 // };
 
-// exports.deleteUser = async (req, res) => {
-//   try {
-//     const response = await model.deleteUser(req.params.id);
-//     if (response.affectedRows === 0) {
-//       return res.status(404).json({ message: "Usuario no encotrado" });
-//     }
-//     res.json({ message: "Usuario eliminado correctamente" });
-//   } catch (error) {
-//     res.status(500).json({ error: "Error al eliminar usuario" });
-//   }
-// };
+exports.deleteUser = async (req, res) => {
+  try {
+    const response = await model.deleteProduct(req.params.id);
+    if (response.affectedRows === 0) {
+      return res.status(404).json({ message: "Producto no encotrado" });
+    }
+    res.json({ message: "Producto eliminado correctamente" });
+  } catch (error) {
+    res.status(500).json({ error: "Error al eliminar usuario" });
+  }
+};
 
 exports.login = async (req, res) => {
   const user = req.body;
