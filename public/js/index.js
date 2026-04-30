@@ -1,5 +1,3 @@
-
-
 function crearCard(id, name, splatterImg, imgHover) {
   const section = document.getElementById("products-div");
 
@@ -56,8 +54,6 @@ async function cargarTodosProductos(params) {
       const data = await response.json();
       const products = data.products;
 
-      console.log(products);
-
       products.forEach((product) => {
         const id = product.product_id;
         const name = product.product_name;
@@ -76,6 +72,46 @@ async function cargarTodosProductos(params) {
   }
 }
 
+async function cargarProductosPagina(params) {
+  try {
+    const response = await fetch("/api/artists", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+
+    if (!response.ok) throw new Error("Error al fetchear artistas");
+
+    const data = await response.json();
+    const artistas = data.artists;
+
+    console.log(artistas);
+
+    const promesas = artistas.map(async (artista) => {
+      const artistId = artista.artist_id;
+      console.log(artistId);
+      const res = await fetch(`/api/productos/aritsta/${artistId}`, {
+        method: 'GET',
+        headers: {
+          "Content-type":"application/json"
+        }
+      });
+      return res.json();
+    })
+
+    const productos = await Promise.all(promesas);
+    console.log(productos);
+
+
+  } catch (error) {
+    console.log("Error inesperado", error.message);
+  }
+}
+
+
+
+document.addEventListener("DOMContentLoaded", cargarProductosPagina);
 document.addEventListener("DOMContentLoaded", cargarTodosProductos);
 
 // JS per al CSS
@@ -88,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Alternar el menú al hacer clic en el botón
   menuBtn.addEventListener("click", (event) => {
     // Evitamos que el clic se propague al documento (útil para el siguiente paso)
-    event.stopPropagation(); 
+    event.stopPropagation();
     dropdownMenu.classList.toggle("show-menu");
   });
 
