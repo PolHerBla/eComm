@@ -49,7 +49,7 @@ exports.getAllArtists = async (req, res) => {
 
 exports.getProductsByArtist = async (req, res) => {
   try {
-    const products = await model.getProductsByArtist(req.params.artista);
+    const products = await model.getProductsByArtist(req.params.id);
     if(!products) {
       return res.status(404).json({message: "Productos no encontrados"});
     }

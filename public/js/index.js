@@ -1,3 +1,5 @@
+const divProductos = document.getElementById('products-div');
+
 function crearCard(id, name, splatterImg, imgHover) {
   const section = document.getElementById("products-div");
 
@@ -37,40 +39,40 @@ function crearCard(id, name, splatterImg, imgHover) {
   card.append(cardImg);
   card.append(cardProductInfo);
 
-  section.append(card);
+  return card;
 }
 
-async function cargarTodosProductos(params) {
+// async function cargarTodosProductos(params) {
 
-  try {
-    const response = await fetch("/api/productos", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json"
-      },
-    });
+//   try {
+//     const response = await fetch("/api/productos", {
+//       method: "GET",
+//       headers: {
+//         "Content-type": "application/json"
+//       },
+//     });
 
-    if (response.ok) {
-      const data = await response.json();
-      const products = data.products;
+//     if (response.ok) {
+//       const data = await response.json();
+//       const products = data.products;
 
-      products.forEach((product) => {
-        const id = product.product_id;
-        const name = product.product_name;
+//       products.forEach((product) => {
+//         const id = product.product_id;
+//         const name = product.product_name;
 
-        const images = JSON.parse(product.product_images);
-        const splatterImg = images[0];
-        const imgHover = images[1] || images[0];
+//         const images = JSON.parse(product.product_images);
+//         const splatterImg = images[0];
+//         const imgHover = images[1] || images[0];
 
-        crearCard(id, name, splatterImg, imgHover);
-      });
-    } else {
-      throw new Error("Error al comunicar con el servidor");
-    }
-  } catch (error) {
-    console.log("Error al cargar productos", error.message);
-  }
-}
+//         crearCard(id, name, splatterImg, imgHover);
+//       });
+//     } else {
+//       throw new Error("Error al comunicar con el servidor");
+//     }
+//   } catch (error) {
+//     console.log("Error al cargar productos", error.message);
+//   }
+// }
 
 async function cargarProductosPagina(params) {
   try {
@@ -91,7 +93,7 @@ async function cargarProductosPagina(params) {
     const promesas = artistas.map(async (artista) => {
       const artistId = artista.artist_id;
       console.log(artistId);
-      const res = await fetch(`/api/productos/aritsta/${artistId}`, {
+      const res = await fetch(`/api/productos/artista/${artistId}`, {
         method: 'GET',
         headers: {
           "Content-type":"application/json"
@@ -100,8 +102,30 @@ async function cargarProductosPagina(params) {
       return res.json();
     })
 
-    const productos = await Promise.all(promesas);
-    console.log(productos);
+    const productosArtista = await Promise.all(promesas);
+    console.log(productosArtista);
+    
+    productosArtista.forEach(artista => {
+
+      const divArtista = document.createElement('div');
+      divArtista.id = 'div-artista';
+
+      artista.products.forEach((product) => {
+        const id = product.product_id;
+        const name = product.product_name;
+
+        const images = JSON.parse(product.product_images);
+        const splatterImg = images[0];
+        const imgHover = images[1] || images[0];
+
+        const card = crearCard(id, name, splatterImg, imgHover);
+
+        divArtista.append(card);
+      });
+
+      divProductos.append(divArtista);
+
+    });
 
 
   } catch (error) {
@@ -110,9 +134,7 @@ async function cargarProductosPagina(params) {
 }
 
 document.addEventListener("DOMContentLoaded", cargarProductosPagina);
-document.addEventListener("DOMContentLoaded", cargarTodosProductos);
-
-// JS per al CSS
+// document.addEventListener("DOMContentLoaded", cargarTodosProductos);
 
 // Lógica para el menú desplegable
 document.addEventListener("DOMContentLoaded", () => {

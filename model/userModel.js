@@ -57,8 +57,8 @@ const models = {
     const [results] = await db.query("SELECT * FROM artists");
     return results;
   },
-  getProductsByArtist: async (artist_id) => {
-    const [results] = await db.query("select p.* from artists a join products p on a.artist_id = p.product_artist where artist_id =  ?", [artist_id]);
+  getProductsByArtist: async (id) => {
+    const [results] = await db.query("select p.* from artists a join products p on a.artist_id = p.product_artist where a.artist_id = ?", [id]);
     return results;
   }
 };

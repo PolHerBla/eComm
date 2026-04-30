@@ -7,7 +7,7 @@ router.post("/login", controller.login);
 
 router.get("/productos", controller.getAllProducts);
 router.get("/productos/:id", controller.getProductById);
-router.get("/productos/artista/:artist", controller.getProductsByArtist);
+router.get("/productos/artista/:id", controller.getProductsByArtist);
 router.get("/product-types", controller.getProductTypes);
 router.get("/artists", controller.getAllArtists);
 router.post("/productos", jwt, controller.createProduct);
