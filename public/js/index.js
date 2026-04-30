@@ -109,8 +109,6 @@ async function cargarProductosPagina(params) {
   }
 }
 
-
-
 document.addEventListener("DOMContentLoaded", cargarProductosPagina);
 document.addEventListener("DOMContentLoaded", cargarTodosProductos);
 
