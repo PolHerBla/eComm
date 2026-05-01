@@ -26,6 +26,7 @@ body {
 
 /* --- HERO & NAVBAR --- (Refinado para coincidir con el boceto) */
 .hero-section {
+  background-color: var(--rosa-acento);
   width: 100%;       /* Asegura el ancho total */
   margin: 0;          /* Elimina cualquier margen */
   border-radius: 0;   /* Quitamos los bordes para que pegue perfecto a los lados y arriba */
@@ -55,7 +56,7 @@ body {
   object-fit: cover;
   z-index: 1;
   /* Mantenemos tus filtros */
-  filter: blur(8px) brightness(0.5); 
+  filter: brightness(0.5); 
 }
 /* 3. Asegura que el contenido esté por encima del video */
 .navbar, 
@@ -83,9 +84,9 @@ body {
 }
 
 .brand-logo img {
-  width: 180px;
-  height: 66px;
-  object-fit: contain;
+  width: 270px;  /* 50% más grande (antes 180px) */
+  height: 100px; /* Ajustado proporcionalmente (antes 66px) */
+  object-fit: contain; /* Asegura que no se deforme ni se estire */
 }
 
 /* --- ACTUALIZACIÓN DE LAS BARRAS DEL MENÚ --- */
@@ -350,5 +351,128 @@ main {
   .brand-logo img {
     width: 140px;
     height: auto;
+  }
+}
+
+/* --- ESTILOS DEL FOOTER --- */
+
+.main-footer {
+  background-color: #0a0a0a; /* Fondo casi negro para contraste */
+  color: #ffffff;
+  padding: 5rem 0 2rem 0;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255, 77, 148, 0.2); /* Línea sutil rosa arriba */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.footer-brand {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-logo {
+  width: 180px;
+  margin-bottom: 1.5rem;
+  filter: brightness(1.1); /* Realza un poco el logo sobre el fondo oscuro */
+}
+
+.footer-brand p {
+  color: #888;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.footer-column h4 {
+  color: var(--rosa-acento); /* Títulos en rosa */
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-column ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: var(--rosa-acento); /* Enlaces se vuelven rosa al pasar el ratón */
+}
+
+.footer-bottom {
+  border-top: 1px solid #222;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.legal-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.legal-links a {
+  color: #555;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.legal-links a:hover {
+  color: #888;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-brand, .footer-links {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .footer-links {
+    gap: 2rem;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
   }
 }
