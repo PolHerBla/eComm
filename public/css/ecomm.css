@@ -1,3 +1,8 @@
+:root {
+  --rosa-acento: #ff4d94; /* Un rosa vibrante pero elegante */
+  --rosa-claro: #fff0f6;   /* Para fondos muy sutiles */
+}
+
 /* Reseteo y variables modernas (Mantener original) */
 * {
   margin: 0;
@@ -34,18 +39,30 @@ body {
   box-shadow: inset 0px 0px 10px rgb(255, 37, 37);
 }
 
+/* 1. Modifica o elimina el ::before actual */
 .hero-section::before {
-  content: "";
+  content: none; /* Esto elimina la imagen de fondo anterior */
+}
+
+/* 2. Estilo para el nuevo video de fondo */
+.hero-video {
   position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
-  background-image: url('https://i.pinimg.com/1200x/eb/fe/b8/ebfeb86c5180f3e105fe0d81d7aa254d.jpg');
-  background-size: cover;
-  background-position: center;
-  filter: blur(10px) brightness(0.4);
-  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Esto hace que el video cubra todo sin deformarse */
+  z-index: 1; /* Lo mantiene detrás del texto */
+  
+  /* Aplicamos los mismos filtros que tenías en la imagen */
+  filter: blur(3px) brightness(0.6);
+}
+
+/* 3. Asegura que el contenido esté por encima del video */
+.navbar, 
+.hero-content {
+  position: relative;
+  z-index: 10; /* Un número mayor que el z-index del video */
 }
 
 .navbar {
@@ -72,27 +89,39 @@ body {
   object-fit: contain;
 }
 
+/* --- ACTUALIZACIÓN DE LAS BARRAS DEL MENÚ --- */
+
+/* --- ARREGLO DE SEPARACIÓN DEL MENÚ --- */
+
 .menu-btn {
   background: transparent;
   border: none;
   width: 40px;
   height: 40px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 6px;
+  flex-direction: column; /* Alineación vertical */
+  justify-content: center; /* Centra el grupo de barras */
+  align-items: flex-end;   /* Las alinea a la derecha[cite: 1] */
+  
+  /* EL CAMBIO CLAVE: Aumentamos el gap a 10px o 12px */
+  gap: 12px; 
+  
   cursor: pointer;
   z-index: 10;
 }
 
 .menu-btn .bar {
-  width: 24px;
-  height: 2px;
-  background-color: #ffffff;
-  transition: width 0.3s ease;
+  width: 28px;
+  height: 4px; /* Grosor de 4px que pediste[cite: 1] */
+  background-color: #ff4d94; /* Color rosa de acento */
+  border-radius: 10px; /* Bordes totalmente redondeados */
+  transition: all 0.3s ease;
+  
+  /* Forzamos que no tengan márgenes extra que puedan romper el gap */
+  margin: 0; 
 }
 
+/* Ajuste del hover para que la barra de arriba se acorte con estilo */
 .menu-btn:hover .bar:first-child {
   width: 16px;
 }
@@ -131,19 +160,26 @@ main {
 }
 
 .artist-tag {
-  background: transparent;
-  border: 1px solid #1a1a1a;
-  color: #1a1a1a;
+  border: 1px solid var(--rosa-acento); /* Borde rosa */
+  color: var(--rosa-acento);           /* Texto rosa */
   padding: 0.7rem 1.5rem;
-  border-radius: 50px; /* Botón redondeado como en el boceto */
-  font-weight: 500;
-  cursor: default; /* No es un botón clicable, es una etiqueta */
-  font-size: 1rem;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer; /* Cambiado a pointer para que parezca interactivo */
+  font-size: 0.9rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  display: block; /* O cupará todo el ancho para la alineación */
-  width: fit-content; /* Se ajusta al tamaño del texto */
-  margin: 0 auto 2.5rem; /* Centrado y con espacio inferior a la cuadrícula */
+  letter-spacing: 1.5px;
+  display: block;
+  width: fit-content;
+  margin: 0 auto 2.5rem;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.artist-tag:hover {
+  background-color: var(--rosa-claro); /* Fondo rosa casi blanco al hover */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 77, 148, 0.2); /* Sombra rosa suave */
 }
 
 /* Receptividad de la etiqueta del artista */
@@ -173,7 +209,9 @@ main {
 
 .product-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  /* Cambiamos la sombra gris por una con un ligero matiz rosa */
+  box-shadow: 0 20px 40px rgba(255, 77, 148, 0.12); 
+  border: 1px solid rgba(255, 77, 148, 0.3); /* Borde rosa muy fino al hover */
 }
 
 .product-image-container {
@@ -207,6 +245,10 @@ main {
   opacity: 1;
 }
 
+.product-card:hover .product-info h3 {
+  color: #000; /* Asegura que el título destaque */
+}
+
 /* --- BUSCA Y REEMPLAZA ESTA SECCIÓN EN TU CSS --- */
 
 .product-info {
@@ -222,8 +264,9 @@ main {
 /* Es importante resetear los márgenes internos para que no afecten al cálculo del centro */
 .product-info h3,
 .product-info p {
-  margin: 0;
-  line-height: 1.2; /* Mejora la legibilidad en títulos de varias líneas */
+  font-size: 0.9rem;
+  color: var(--rosa-acento); /* Toque de color aquí */
+  font-weight: 500;
 }
 
 .product-info h3 {
