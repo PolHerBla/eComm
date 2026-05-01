@@ -1,45 +1,51 @@
-const divProductos = document.getElementById('products-div');
-
 function crearCard(id, name, splatterImg, imgHover) {
-  const section = document.getElementById("products-div");
 
-  const card = document.createElement("article");
-  card.classList.add("product-card");
 
-  const cardImg = document.createElement("div");
-  cardImg.classList.add("product-image-container");
+  //Por cada producto
+  const product = document.createElement('article');
+  product.classList.add('product-card');
 
-  const imagePrimary = document.createElement("img");
-  imagePrimary.classList.add("img-primary");
-  imagePrimary.src = `${splatterImg}`;
+  const product_img_container = document.createElement('div');
+  product_img_container.classList.add('product-image-container');
 
-  const imageHover = document.createElement("img");
-  imageHover.classList.add("img-hover");
-  imageHover.src = `${imgHover}`;
+  //Dentro de product_img_container
+  const mainImage = document.createElement('img');
+  mainImage.classList.add('img-primary');
+  mainImage.src = splatterImg;
 
-  cardImg.append(imagePrimary, imageHover);
+  const hoverImg = document.createElement('img');
+  hoverImg.classList.add('img-hover');
+  hoverImg.src = imgHover;
 
-  cardImg.addEventListener('click', () => {
+  const product_info = document.createElement('div');
+  product_info.classList.add('product-info');
+
+
+  // Dentro de info
+  const product_name = document.createElement('h3');
+  product_name.textContent = `${name}`;
+
+  const product_price = document.createElement('p');
+  product_price.textContent = 'Glati';
+
+
+  // Añado cada elemento en si div
+  product_img_container.append(mainImage, hoverImg);
+
+  product_info.append(product_name, product_price);
+
+  // Añado todo al div principal de producto
+  product.append(product_img_container, product_info);
+
+
+  product_img_container.addEventListener('click', () => {
     window.location.href = `/html/product.html?id=${id}`;
   });
 
   // Modifica a traves de css el estil del mouse al pasar per sobre del card
-  card.style.cursor = "pointer";
+  product.style.cursor = "pointer";
 
-  const cardProductInfo = document.createElement("div");
-  cardProductInfo.classList.add("product-info");
-
-  const cardProductName = document.createElement("h3");
-
-  const cardProductPrice = document.createElement("p");
-
-  cardProductName.textContent = `${name}`;
-
-  cardProductInfo.append(cardProductName);
-  card.append(cardImg);
-  card.append(cardProductInfo);
-
-  return card;
+  return product;
 }
 
 // async function cargarTodosProductos(params) {
@@ -88,8 +94,6 @@ async function cargarProductosPagina(params) {
     const data = await response.json();
     const artistas = data.artists;
 
-    console.log(artistas);
-
     const promesas = artistas.map(async (artista) => {
       const artistId = artista.artist_id;
       console.log(artistId);
@@ -106,9 +110,17 @@ async function cargarProductosPagina(params) {
     console.log(productosArtista);
     
     productosArtista.forEach(artista => {
+      const main_block = document.getElementById('products-content');
 
-      const divArtista = document.createElement('div');
-      divArtista.id = 'div-artista';
+      const artist_block = document.createElement("div");
+      artist_block.classList.add("artist-block");
+
+      const artist_button = document.createElement("button");
+      artist_button.classList.add('artist-tag');
+      artist_button.textContent = `${artista.products[0].artist_name}`;
+
+      const artist_products = document.createElement("div");
+      artist_products.classList.add("products-grid");
 
       artista.products.forEach((product) => {
         const id = product.product_id;
@@ -120,10 +132,12 @@ async function cargarProductosPagina(params) {
 
         const card = crearCard(id, name, splatterImg, imgHover);
 
-        divArtista.append(card);
+        artist_products.append(card);
       });
 
-      divProductos.append(divArtista);
+      artist_block.append(artist_button, artist_products);
+
+      main_block.append(artist_block);
 
     });
 

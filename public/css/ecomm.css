@@ -1,4 +1,4 @@
-/* Reseteo y variables modernas */
+/* Reseteo y variables modernas (Mantener original) */
 * {
   margin: 0;
   padding: 0;
@@ -20,7 +20,7 @@ body {
   padding: 2rem 5%;
 }
 
-/* --- HERO & NAVBAR --- */
+/* --- HERO & NAVBAR --- (Refinado para coincidir con el boceto) */
 .hero-section {
   background-color: #efefef;
   border-radius: 24px;
@@ -28,18 +28,16 @@ body {
   min-height: 400px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 4rem;
+  margin-bottom: 4rem; /* Reducido para que la sección de productos esté más cerca */
   position: relative;
   overflow: hidden;
-  /* Mantuve tu sombra roja interior */
   box-shadow: inset 0px 0px 10px rgb(255, 37, 37);
 }
 
-/* Manejo correcto de la imagen de fondo con efectos */
 .hero-section::before {
   content: "";
   position: absolute;
-  top: -10px; /* Expande un poco para que el blur no deje bordes blancos */
+  top: -10px;
   left: -10px;
   right: -10px;
   bottom: -10px;
@@ -47,23 +45,19 @@ body {
   background-size: cover;
   background-position: center;
   filter: blur(10px) brightness(0.4);
-  z-index: 1; /* Lo mantiene detrás del texto y logo */
+  z-index: 1;
 }
 
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Menú a la derecha, espaciado uniforme */
   align-items: center;
   padding: 2rem;
   position: relative;
-  z-index: 20; /* Asegura que la navegación esté por encima del fondo */
+  z-index: 20;
 }
 
-.spacer {
-  width: 40px;
-}
-
-/* Unificación de estilos del logo */
+/* Unificación de estilos del logo (Mantenido) */
 .brand-logo {
   position: absolute;
   left: 50%;
@@ -75,7 +69,7 @@ body {
 .brand-logo img {
   width: 180px;
   height: 66px;
-  object-fit: contain; /* Evita que la imagen se deforme */
+  object-fit: contain;
 }
 
 .menu-btn {
@@ -95,7 +89,7 @@ body {
 .menu-btn .bar {
   width: 24px;
   height: 2px;
-  background-color: #ffffff; /* Cambiado a blanco para contrastar con el fondo oscuro */
+  background-color: #ffffff;
   transition: width 0.3s ease;
 }
 
@@ -112,47 +106,56 @@ body {
   text-align: center;
   padding: 0 2rem;
   position: relative;
-  z-index: 10; /* Asegura que el texto esté por encima del fondo */
+  z-index: 10;
 }
 
 .hero-content p {
-  color: white; /* Estilo que tenías en línea, movido al CSS */
+  color: white;
   font-size: 36px;
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 1rem;
 }
 
-/* --- SECCIÓN PRODUCTOS DESTACADOS --- */
-.featured-section {
+/* --- SECCIÓN PRODUCTOS DESTACADOS (Reemplazada por bloques de artistas) --- */
+/* (Eliminado .featured-section y .section-header originales) */
+
+/* Contenedor de contenido principal (Main) */
+main {
   margin-bottom: 4rem;
 }
 
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 2rem;
+/* --- ESTILOS DE BLOQUE DE ARTISTA Y ETIQUETA --- */
+.artist-block {
+  margin-bottom: 4rem; /* Espacio entre artistas */
 }
 
-.section-title {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-.view-all {
-  color: #666;
-  text-decoration: none;
-  font-size: 0.9rem;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s ease;
-}
-
-.view-all:hover {
-  border-color: #1a1a1a;
+.artist-tag {
+  background: transparent;
+  border: 1px solid #1a1a1a;
   color: #1a1a1a;
+  padding: 0.7rem 1.5rem;
+  border-radius: 50px; /* Botón redondeado como en el boceto */
+  font-weight: 500;
+  cursor: default; /* No es un botón clicable, es una etiqueta */
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block; /* O cupará todo el ancho para la alineación */
+  width: fit-content; /* Se ajusta al tamaño del texto */
+  margin: 0 auto 2.5rem; /* Centrado y con espacio inferior a la cuadrícula */
 }
 
+/* Receptividad de la etiqueta del artista */
+@media (max-width: 768px) {
+  .artist-tag {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+/* --- ESTILOS DE CUADRÍCULA Y TARJETA DE PRODUCTO (Mantenidos) --- */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -173,53 +176,10 @@ body {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
 }
 
-.product-image {
-  background-color: #f5f5f5;
-  height: 300px;
-  width: 100%;
-}
-
-.product-info {
-  padding: 1.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.product-info h3 {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #333;
-}
-
-.product-info p {
-  font-size: 1rem;
-  color: #888;
-}
-
-/* Ajustes responsivos */
-@media (max-width: 768px) {
-  .hero-section {
-    border-radius: 16px;
-    height: 50vh;
-  }
-  .products-grid {
-    gap: 1.5rem;
-  }
-  .brand-logo img {
-    width: 140px; /* Reduce el tamaño del logo en móviles */
-    height: auto;
-  }
-}
-
-/* Contenedor relativo para que las imágenes absolutas se alineen dentro */
 .product-image-container {
   position: relative;
   width: 100%;
-  /* Esto obliga a que la altura sea siempre igual al ancho (1:1) */
-  /* Si prefieres más vertical, puedes usar 3 / 4 o 2 / 3 */
   aspect-ratio: 1 / 1; 
-  
   overflow: hidden;
   background-color: #f5f5f5;
   border-radius: 16px 16px 0 0;
@@ -231,20 +191,14 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  
-  /* 'cover' asegura que la imagen llene el espacio sin deformarse */
-  /* 'contain' asegura que se vea TODA la imagen, aunque deje bordes si no es cuadrada */
   object-fit: cover; 
-  
   transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* La imagen de hover empieza invisible */
 .img-hover {
   opacity: 0;
 }
 
-/* Al pasar por encima de la card, cambiamos las opacidades */
 .product-card:hover .img-primary {
   opacity: 0;
 }
@@ -253,26 +207,56 @@ body {
   opacity: 1;
 }
 
-/* --- MENÚ DESPLEGABLE --- */
-/* El contenedor padre ahora es el "ancla" */
+/* --- BUSCA Y REEMPLAZA ESTA SECCIÓN EN TU CSS --- */
+
+.product-info {
+  padding: 0 1.5rem; /* Quitamos el padding vertical para que el centrado sea exacto */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  /* ESTO ES LO QUE ARREGLA LA ALINEACIÓN: */
+  min-height: 90px; /* Ajusta este valor según el largo máximo de tus títulos */
+}
+
+/* Es importante resetear los márgenes internos para que no afecten al cálculo del centro */
+.product-info h3,
+.product-info p {
+  margin: 0;
+  line-height: 1.2; /* Mejora la legibilidad en títulos de varias líneas */
+}
+
+.product-info h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  /* Si quieres que el texto no se pegue al precio/artista */
+  padding-right: 10px; 
+}
+
+.product-info p {
+  font-size: 1rem;
+  color: #888;
+  white-space: nowrap; /* Evita que el precio/artista se rompa en dos líneas */
+}
+
+/* --- MENÚ DESPLEGABLE (Mantenido) --- */
 .menu-wrapper {
   position: relative; 
   display: flex;
   align-items: center;
-  margin-left: auto; /* <--- ESTA ES LA CLAVE */
+  margin-left: auto; /* Mantenido para asegurar posición */
 }
 
 .dropdown-menu {
   position: absolute;
-  top: 100%; /* Se coloca justo debajo del contenedor padre */
-  right: 0;   /* Se alinea perfectamente al borde derecho del botón */
+  top: 100%; 
+  right: 0;   
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   min-width: 200px;
-  margin-top: 10px; /* Espacio visual entre botón y menú */
-  
-  /* Lógica de ocultación (igual que antes) */
+  margin-top: 10px; 
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
@@ -287,7 +271,7 @@ body {
 }
 
 .menu-links {
-  list-style: none; /* Quita los puntos de la lista */
+  list-style: none;
 }
 
 .menu-links li {
@@ -295,11 +279,11 @@ body {
 }
 
 .menu-links li:last-child {
-  border-bottom: none; /* El último elemento no necesita borde */
+  border-bottom: none;
 }
 
 .menu-links a {
-  display: block; /* Para que toda la fila sea clicable, no solo el texto */
+  display: block; 
   padding: 1rem 1.5rem;
   text-decoration: none;
   color: #1a1a1a;
@@ -309,5 +293,20 @@ body {
 
 .menu-links a:hover {
   background-color: #f5f5f7;
-  color: #0071e3; /* Azul estilo Apple de tu login.css */
+  color: #0071e3;
+}
+
+/* Ajustes responsivos (Mantenido y adaptado) */
+@media (max-width: 768px) {
+  .hero-section {
+    border-radius: 16px;
+    height: 50vh;
+  }
+  .products-grid {
+    gap: 1.5rem;
+  }
+  .brand-logo img {
+    width: 140px;
+    height: auto;
+  }
 }
