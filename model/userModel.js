@@ -34,17 +34,21 @@ const models = {
     const [result] = await db.query("DELETE FROM products WHERE product_id = ?", [id]);
     return result;
   },
-  // updateProduct: async (id, userData) => {
-  //   const [result] = await db.query(
-  //     "UPDATE products SET nombre = ? WHERE usr_id = ?",
-  //     [userData.nombre, id],
-  //   );
-  //   return result;
-  // },
-  // deleteProduct: async (id) => {
-  //   const result = await db.query("DELETE FROM users WHERE usr_id = ?", [id]);
-  //   return result;
-  // },
+  updateProduct: async (id, product_data) => {
+    const [result] = await db.query(
+      "UPDATE products SET product_type = ?, product_name = ?, product_desc = ?, product_extra_info = ?, product_artist = ?, product_images = ? WHERE product_id = ?",
+      [
+        product_data.type,
+        product_data.name,
+        product_data.desc,
+        product_data.extra,
+        product_data.artist,
+        product_data.image,
+        id
+    ]
+    );
+    return result;
+  },
   // Ruta per conseguir email, útil per validar el usuari que es conecta
   getUserByCredentials: async (email, password) => {
     const [result] = await db.query(

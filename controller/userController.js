@@ -72,17 +72,17 @@ exports.createProduct = async (req, res) => {
   }
 };
 
-// exports.updateUser = async (req, res) => {
-//   try {
-//     const response = await model.updateUser(req.params.id, req.body);
-//     if ((response.affectedRows = 0)) {
-//       return res.status(404).json({ message: "Error al encontrar usuario" });
-//     }
-//     res.json({ message: "Usuario actualizado correctamente" });
-//   } catch (error) {
-//     res.status(500).json({ error: "Error al actualizar usuario" });
-//   }
-// };
+exports.updateProduct = async (req, res) => {
+  try {
+    const response = await model.updateProduct(req.params.id, req.body);
+    if ((response.affectedRows = 0)) {
+      return res.status(404).json({ message: "Error al encontrar producto" });
+    }
+    res.json({ message: "Producto actualizado correctamente" });
+  } catch (error) {
+    res.status(500).json({ error: "Error al actualizar producto" });
+  }
+};
 
 exports.deleteProduct = async (req, res) => {
   try {

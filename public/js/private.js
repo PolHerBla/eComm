@@ -1,5 +1,6 @@
 const boton_crear = document.getElementById('btnCrearProducto');
-const boton_eliminar = document.getElementById('btnEliminarProducto')
+const boton_eliminar = document.getElementById('btnEliminarProducto');
+const boton_actualizar = document.getElementById('btnModificarProducto');
 
 async function verificarAcceso() {
     const token = localStorage.getItem("miTokenVip");
@@ -185,8 +186,6 @@ async function crearProducto() {
 
         if (!result.ok) {
             throw new Error("Error en la petición");
-            console.log(data);
-            return;
         }
 
         console.log("Producto creado correctamente");
@@ -196,12 +195,50 @@ async function crearProducto() {
     }
 }
 
+async function actualizarProducto() {
+  const token = localStorage.getItem("miTokenVip");
+  
+  const product_id = document.getElementById("modificar-id").value;
+  const image = document.getElementById("modificar-imagen").value;
+
+  const updated_product = {
+    type: document.getElementById("modificar-tipo").value,
+    name: document.getElementById("modificar-nombre").value,
+    desc: document.getElementById("modificar-desc").value,
+    extra: document.getElementById("modificar-extra").value,
+    artist: document.getElementById("modificar-artista").value,
+    image: JSON.stringify([image])
+  }
+  
+  try {
+    const response = await fetch(`/api/productos/${product_id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(updated_product)
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error("Error en el proceso de lanzar la consulta");
+    }
+
+    console.log(data.message);
+
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
 async function eliminarProducto() {
     const product_id = document.getElementById("eliminar-id").value;
     const token = localStorage.getItem("miTokenVip");
 
     try {
-        const response = await fetch(`/api/productos/delete/${product_id}`, {
+        const response = await fetch(`/api/productos/${product_id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -230,6 +267,7 @@ function cargarTodo() {
 }
 
 
-document.addEventListener('DOMContentLoaded', cargarTodo)
+document.addEventListener('DOMContentLoaded', cargarTodo);
 boton_crear.addEventListener('click', crearProducto);
+boton_actualizar.addEventListener('click', actualizarProducto);
 boton_eliminar.addEventListener('click', eliminarProducto);

@@ -11,9 +11,8 @@ router.get("/productos/artista/:id", controller.getProductsByArtist);
 router.get("/product-types", controller.getProductTypes);
 router.get("/artists", controller.getAllArtists);
 router.post("/productos", jwt, controller.createProduct);
-// router.put("/:id", jwt, controller.updateUser);
-router.delete("/productos/delete/:id", jwt, controller.deleteProduct);
-
+router.put("/productos/:id", jwt, controller.updateProduct);
+router.delete("/productos/:id", jwt, controller.deleteProduct);
 
 // Verica si el usuari te token, per tant té sessió iniciada
 router.get("/verify-session", jwt, controller.verifySession);
