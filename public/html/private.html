@@ -1,98 +1,139 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gestión de eCommerce - Sticky M.A</title>
-    <link rel="stylesheet" href="../css/login.css" />
-    <link rel="stylesheet" href="../css/gestion.css" />
-    <link rel="stylesheet" href="../css/private.css" />
-    <script src="../js/private.js" defer></script>
-  </head>
-  <body>
-    <div class="container-full">
-      <header>
-        <h1>Panel de Gestión</h1>
-        <p class="subtitle">Administra los productos de la tienda</p>
-        <a href="ecommerce.html" class="back-link">← Volver a la tienda</a>
-      </header>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Gestión de eCommerce - Sticky M.A</title>
+        <link rel="stylesheet" href="../css/login.css" />
+        <link rel="stylesheet" href="../css/gestion.css" />
+        <link rel="stylesheet" href="../css/private.css" />
+        <script src="../js/private.js" defer></script>
+    </head>
+    <body>
+        <div class="container-full">
+            <header>
+                <h1>Panel de Gestión</h1>
+                <p class="subtitle">Administra los productos de la tienda</p>
+                <a href="ecommerce.html" class="back-link"
+                    >← Volver a la tienda</a
+                >
+            </header>
 
-      <main class="management-grid">
-        <section class="card">
-          <h2>Crear Producto</h2>
+            <main class="management-grid">
+                <section class="card">
+                    <h2>Crear Producto</h2>
 
-          <select id="crear-tipo">
-            <option value="" disabled selected>
-              Selecciona el tipo de producto
-            </option>
-          </select>
+                    <select id="crear-tipo">
+                        <option value="" disabled selected>
+                            Selecciona el tipo de producto
+                        </option>
+                    </select>
 
-          <input type="text" id="crear-nombre" placeholder="Nombre" />
+                    <input type="text" id="crear-nombre" placeholder="Nombre" />
 
-          <textarea id="crear-desc" placeholder="Descripción"></textarea>
+                    <textarea
+                        id="crear-desc"
+                        placeholder="Descripción"
+                    ></textarea>
 
-          <textarea
-            id="crear-extra"
-            placeholder="Información extra (Ej: Materiales, cuidados...)"
-          ></textarea>
+                    <textarea
+                        id="crear-extra"
+                        placeholder="Información extra (Ej: Materiales, cuidados...)"
+                    ></textarea>
 
-          <select id="crear-artista">
-            <option value="" disabled selected>Selecciona el artista</option>
-          </select>
+                    <select id="crear-artista">
+                        <option value="" disabled selected>
+                            Selecciona el artista
+                        </option>
+                    </select>
 
-          <input
-            type="url"
-            id="crear-imagen"
-            placeholder="Link de la imagen principal"
-          />
+                    <input
+                        type="url"
+                        id="crear-imagen"
+                        placeholder="Link de la imagen principal"
+                    />
 
-          <button class="btn-primary" id="btnCrearProducto">
-            Añadir Producto
-          </button>
-        </section>
+                    <div id="feedback-crear" class="feedback-message"></div>
 
-<!-- SECCIÓN: MODIFICAR PRODUCTO -->
-<section class="card">
-    <h2>Modificar Producto</h2>
-    
-    <!-- Select dinámico para elegir QUÉ producto modificar -->
-    <select id="modificar-id">
-        <option value="" disabled selected>Cargando productos...</option>
-    </select>
-    
-    <hr>
-    
-    <!-- Selects fijos (iguales que en Crear) -->
-    <select id="modificar-tipo">
-        <option value="" disabled selected>Nuevo tipo de producto</option>
-    </select>
+                    <button class="btn-primary" id="btnCrearProducto">
+                        Añadir Producto
+                    </button>
+                </section>
 
-    <input type="text" id="modificar-nombre" placeholder="Nuevo nombre">
-    <textarea id="modificar-desc" placeholder="Nueva descripción"></textarea>
-    <textarea id="modificar-extra" placeholder="Nueva información extra"></textarea>
+                <!-- SECCIÓN: MODIFICAR PRODUCTO -->
+                <section class="card">
+                    <h2>Modificar Producto</h2>
 
-    <select id="modificar-artista">
-        <option value="" disabled selected>Nuevo artista</option>
-    </select>
+                    <!-- Select dinámico para elegir QUÉ producto modificar -->
+                    <select id="modificar-id">
+                        <option value="" disabled selected>
+                            Cargando productos...
+                        </option>
+                    </select>
 
-    <input type="url" id="modificar-imagen" placeholder="Nuevo link de imagen">
-    
-    <button class="btn-secondary" id="btnModificarProducto">Actualizar Datos</button>
-</section>
+                    <hr />
 
-<!-- SECCIÓN: ELIMINAR PRODUCTO -->
-<section class="card delete-card">
-    <h2>Eliminar Producto</h2>
-    <p class="warning-text">Esta acción no se puede deshacer.</p>
-    
-    <!-- Select dinámico para elegir qué producto eliminar -->
-    <select id="eliminar-id">
-        <option value="" disabled selected>Cargando productos...</option>
-    </select>
-    
-    <button class="btn-danger" id="btnEliminarProducto">Eliminar permanentemente</button>
-</section>
-      </main>
-    </div>
-  </body>
+                    <!-- Selects fijos (iguales que en Crear) -->
+                    <select id="modificar-tipo">
+                        <option value="" disabled selected>
+                            Nuevo tipo de producto
+                        </option>
+                    </select>
+
+                    <input
+                        type="text"
+                        id="modificar-nombre"
+                        placeholder="Nuevo nombre"
+                    />
+                    <textarea
+                        id="modificar-desc"
+                        placeholder="Nueva descripción"
+                    ></textarea>
+                    <textarea
+                        id="modificar-extra"
+                        placeholder="Nueva información extra"
+                    ></textarea>
+
+                    <select id="modificar-artista">
+                        <option value="" disabled selected>
+                            Nuevo artista
+                        </option>
+                    </select>
+
+                    <input
+                        type="url"
+                        id="modificar-imagen"
+                        placeholder="Nuevo link de imagen"
+                    />
+
+                    <div id="feedback-modificar" class="feedback-message"></div>
+
+                    <button class="btn-secondary" id="btnModificarProducto">
+                        Actualizar Datos
+                    </button>
+                </section>
+
+                <!-- SECCIÓN: ELIMINAR PRODUCTO -->
+                <section class="card delete-card">
+                    <h2>Eliminar Producto</h2>
+                    <p class="warning-text">
+                        Esta acción no se puede deshacer.
+                    </p>
+
+                    <!-- Select dinámico para elegir qué producto eliminar -->
+                    <select id="eliminar-id">
+                        <option value="" disabled selected>
+                            Cargando productos...
+                        </option>
+                    </select>
+
+                    <div id="feedback-eliminar" class="feedback-message"></div>
+
+                    <button class="btn-danger" id="btnEliminarProducto">
+                        Eliminar permanentemente
+                    </button>
+                </section>
+            </main>
+        </div>
+    </body>
 </html>
