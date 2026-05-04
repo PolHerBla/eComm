@@ -1,92 +1,95 @@
 :root {
-  --rosa-acento: #ff4d94; /* Un rosa vibrante pero elegante */
-  --rosa-claro: #fff0f6;   /* Para fondos muy sutiles */
+    --rosa-acento: #ff4d94; /* Un rosa vibrante pero elegante */
+    --rosa-claro: #fff0f6; /* Para fondos muy sutiles */
 }
 
 /* Reseteo y variables modernas (Mantener original) */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+        sans-serif;
 }
 
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 5%;
 }
 
 /* --- HERO & NAVBAR --- (Refinado para coincidir con el boceto) */
 .hero-section {
-  background-color: var(--rosa-acento);
-  width: 100%;       /* Asegura el ancho total */
-  margin: 0;          /* Elimina cualquier margen */
-  border-radius: 0;   /* Quitamos los bordes para que pegue perfecto a los lados y arriba */
-  
-  /* Si quieres que los bordes sigan siendo redondeados solo abajo, usa esto: */
-  /* border-radius: 0 0 30px 30px; */
-  
-  height: 70vh;       /* Puedes ajustar la altura a tu gusto */
-  min-height: 500px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: none;   /* Opcional: quita la sombra si quieres un look más limpio arriba */
+    background-color: var(--rosa-acento);
+    width: 100%; /* Asegura el ancho total */
+    margin: 0; /* Elimina cualquier margen */
+    border-radius: 0; /* Quitamos los bordes para que pegue perfecto a los lados y arriba */
+
+    /* Si quieres que los bordes sigan siendo redondeados solo abajo, usa esto: */
+    /* border-radius: 0 0 30px 30px; */
+
+    height: 70vh; /* Puedes ajustar la altura a tu gusto */
+    min-height: 500px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: none; /* Opcional: quita la sombra si quieres un look más limpio arriba */
+
+    display: flex;
+    flex-direction: column;
 }
 
 /* 1. Modifica o elimina el ::before actual */
 .hero-section::before {
-  content: none; /* Esto elimina la imagen de fondo anterior */
+    content: none; /* Esto elimina la imagen de fondo anterior */
 }
 
 /* 2. Estilo para el nuevo video de fondo */
 .hero-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-  /* Mantenemos tus filtros */
-  filter: brightness(0.5); 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    /* Mantenemos tus filtros */
+    filter: brightness(0.5);
 }
 /* 3. Asegura que el contenido esté por encima del video */
-.navbar, 
+.navbar,
 .hero-content {
-  position: relative;
-  z-index: 10; /* Un número mayor que el z-index del video */
+    position: relative;
+    z-index: 10; /* Un número mayor que el z-index del video */
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-between; /* Menú a la derecha, espaciado uniforme */
-  align-items: center;
-  padding: 2rem;
-  position: relative;
-  z-index: 20;
+    display: flex;
+    justify-content: space-between; /* Menú a la derecha, espaciado uniforme */
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 20;
 }
 
 /* Unificación de estilos del logo (Mantenido) */
 .brand-logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
 }
 
 .brand-logo img {
-  width: 270px;  /* 50% más grande (antes 180px) */
-  height: 100px; /* Ajustado proporcionalmente (antes 66px) */
-  object-fit: contain; /* Asegura que no se deforme ni se estire */
+    width: 270px; /* 50% más grande (antes 180px) */
+    height: 100px; /* Ajustado proporcionalmente (antes 66px) */
+    object-fit: contain; /* Asegura que no se deforme ni se estire */
 }
 
 /* --- ACTUALIZACIÓN DE LAS BARRAS DEL MENÚ --- */
@@ -94,56 +97,56 @@ body {
 /* --- ARREGLO DE SEPARACIÓN DEL MENÚ --- */
 
 .menu-btn {
-  background: transparent;
-  border: none;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  flex-direction: column; /* Alineación vertical */
-  justify-content: center; /* Centra el grupo de barras */
-  align-items: flex-end;   /* Las alinea a la derecha[cite: 1] */
-  
-  /* EL CAMBIO CLAVE: Aumentamos el gap a 10px o 12px */
-  gap: 12px; 
-  
-  cursor: pointer;
-  z-index: 10;
+    background: transparent;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column; /* Alineación vertical */
+    justify-content: center; /* Centra el grupo de barras */
+    align-items: flex-end; /* Las alinea a la derecha[cite: 1] */
+
+    /* EL CAMBIO CLAVE: Aumentamos el gap a 10px o 12px */
+    gap: 12px;
+
+    cursor: pointer;
+    z-index: 10;
 }
 
 .menu-btn .bar {
-  width: 28px;
-  height: 4px; /* Grosor de 4px que pediste[cite: 1] */
-  background-color: #ff4d94; /* Color rosa de acento */
-  border-radius: 10px; /* Bordes totalmente redondeados */
-  transition: all 0.3s ease;
-  
-  /* Forzamos que no tengan márgenes extra que puedan romper el gap */
-  margin: 0; 
+    width: 28px;
+    height: 4px; /* Grosor de 4px que pediste[cite: 1] */
+    background-color: #ff4d94; /* Color rosa de acento */
+    border-radius: 10px; /* Bordes totalmente redondeados */
+    transition: all 0.3s ease;
+
+    /* Forzamos que no tengan márgenes extra que puedan romper el gap */
+    margin: 0;
 }
 
 /* Ajuste del hover para que la barra de arriba se acorte con estilo */
 .menu-btn:hover .bar:first-child {
-  width: 16px;
+    width: 16px;
 }
 
 .hero-content {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 2rem;
-  position: relative;
-  z-index: 10;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 10;
 }
 
 .hero-content p {
-  color: white;
-  font-size: 36px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  margin-bottom: 1rem;
+    color: white;
+    font-size: 36px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
 }
 
 /* --- SECCIÓN PRODUCTOS DESTACADOS (Reemplazada por bloques de artistas) --- */
@@ -151,327 +154,332 @@ body {
 
 /* Contenedor de contenido principal (Main) */
 main {
-  margin-bottom: 4rem;
+    margin-bottom: 4rem;
 }
 
 /* --- ESTILOS DE BLOQUE DE ARTISTA Y ETIQUETA --- */
 .artist-block {
-  margin-bottom: 4rem; /* Espacio entre artistas */
+    margin-bottom: 4rem; /* Espacio entre artistas */
 }
 
 .artist-tag {
-  border: 1px solid var(--rosa-acento); /* Borde rosa */
-  color: var(--rosa-acento);           /* Texto rosa */
-  padding: 0.7rem 1.5rem;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  display: block;
-  width: fit-content;
-  margin: 0 auto 2.5rem;
-  transition: all 0.3s ease;
-  background: transparent;
+    border: 1px solid var(--rosa-acento); /* Borde rosa */
+    color: var(--rosa-acento); /* Texto rosa */
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: block;
+    width: fit-content;
+    margin: 0 auto 2.5rem;
+    transition: all 0.3s ease;
+    background: transparent;
 }
 
 .artist-tag:hover {
-  background-color: var(--rosa-claro); /* Fondo rosa casi blanco al hover */
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 77, 148, 0.2); /* Sombra rosa suave */
+    background-color: var(--rosa-claro); /* Fondo rosa casi blanco al hover */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 77, 148, 0.2); /* Sombra rosa suave */
 }
 
 /* Receptividad de la etiqueta del artista */
 @media (max-width: 768px) {
-  .artist-tag {
-    font-size: 0.9rem;
-    padding: 0.6rem 1.2rem;
-    margin-bottom: 2rem;
-  }
+    .artist-tag {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+        margin-bottom: 2rem;
+    }
 }
 
 /* --- ESTILOS DE CUADRÍCULA Y TARJETA DE PRODUCTO (Mantenidos) --- */
 .products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
 .product-card {
-  background-color: #ffffff;
-  border-radius: 16px;
-  overflow: hidden;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  cursor: pointer;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
 
 .product-card:hover {
-  transform: translateY(-8px);
-  /* Cambiamos la sombra gris por una con un ligero matiz rosa */
-  box-shadow: 0 20px 40px rgba(255, 77, 148, 0.12); 
-  border: 1px solid rgba(255, 77, 148, 0.3); /* Borde rosa muy fino al hover */
+    transform: translateY(-8px);
+    /* Cambiamos la sombra gris por una con un ligero matiz rosa */
+    box-shadow: 0 20px 40px rgba(255, 77, 148, 0.12);
+    border: 1px solid rgba(255, 77, 148, 0.3); /* Borde rosa muy fino al hover */
 }
 
 .product-image-container {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1; 
-  overflow: hidden;
-  background-color: #f5f5f5;
-  border-radius: 16px 16px 0 0;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    border-radius: 16px 16px 0 0;
 }
 
 .product-image-container img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .img-hover {
-  opacity: 0;
+    opacity: 0;
 }
 
 .product-card:hover .img-primary {
-  opacity: 0;
+    opacity: 0;
 }
 
 .product-card:hover .img-hover {
-  opacity: 1;
+    opacity: 1;
 }
 
 .product-card:hover .product-info h3 {
-  color: #000; /* Asegura que el título destaque */
+    color: #000; /* Asegura que el título destaque */
 }
 
 /* --- BUSCA Y REEMPLAZA ESTA SECCIÓN EN TU CSS --- */
 
 .product-info {
-  padding: 0 1.5rem; /* Quitamos el padding vertical para que el centrado sea exacto */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  
-  /* ESTO ES LO QUE ARREGLA LA ALINEACIÓN: */
-  min-height: 90px; /* Ajusta este valor según el largo máximo de tus títulos */
+    padding: 0 1.5rem; /* Quitamos el padding vertical para que el centrado sea exacto */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* ESTO ES LO QUE ARREGLA LA ALINEACIÓN: */
+    min-height: 90px; /* Ajusta este valor según el largo máximo de tus títulos */
 }
 
 /* Es importante resetear los márgenes internos para que no afecten al cálculo del centro */
 .product-info h3,
 .product-info p {
-  font-size: 0.9rem;
-  color: var(--rosa-acento); /* Toque de color aquí */
-  font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--rosa-acento); /* Toque de color aquí */
+    font-weight: 500;
 }
 
 .product-info h3 {
-  font-size: 1rem;
-  font-weight: 500;
-  color: #333;
-  /* Si quieres que el texto no se pegue al precio/artista */
-  padding-right: 10px; 
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    /* Si quieres que el texto no se pegue al precio/artista */
+    padding-right: 10px;
 }
 
 .product-info p {
-  font-size: 1rem;
-  color: #888;
-  white-space: nowrap; /* Evita que el precio/artista se rompa en dos líneas */
+    font-size: 1rem;
+    color: #888;
+    white-space: nowrap; /* Evita que el precio/artista se rompa en dos líneas */
 }
 
 /* --- MENÚ DESPLEGABLE (Mantenido) --- */
 .menu-wrapper {
-  position: relative; 
-  display: flex;
-  align-items: center;
-  margin-left: auto; /* Mantenido para asegurar posición */
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Mantenido para asegurar posición */
 }
 
 .dropdown-menu {
-  position: absolute;
-  top: 100%; 
-  right: 0;   
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  min-width: 200px;
-  margin-top: 10px; 
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  z-index: 100;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    min-width: 200px;
+    margin-top: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
 }
 
 .dropdown-menu.show-menu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .menu-links {
-  list-style: none;
+    list-style: none;
 }
 
 .menu-links li {
-  border-bottom: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .menu-links li:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 .menu-links a {
-  display: block; 
-  padding: 1rem 1.5rem;
-  text-decoration: none;
-  color: #1a1a1a;
-  font-weight: 500;
-  transition: background-color 0.3s ease, color 0.3s ease;
+    display: block;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: #1a1a1a;
+    font-weight: 500;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
 
 .menu-links a:hover {
-  background-color: #f5f5f7;
-  color: #0071e3;
+    background-color: #f5f5f7;
+    color: #0071e3;
 }
 
 /* Ajustes responsivos (Mantenido y adaptado) */
 @media (max-width: 768px) {
-  .hero-section {
-    border-radius: 16px;
-    height: 50vh;
-  }
-  .products-grid {
-    gap: 1.5rem;
-  }
-  .brand-logo img {
-    width: 140px;
-    height: auto;
-  }
+    .hero-section {
+        border-radius: 16px;
+        height: 50vh;
+    }
+    .products-grid {
+        gap: 1.5rem;
+    }
+    .brand-logo img {
+        width: 140px;
+        height: auto;
+    }
 }
 
 /* --- ESTILOS DEL FOOTER --- */
 
 .main-footer {
-  background-color: #0a0a0a; /* Fondo casi negro para contraste */
-  color: #ffffff;
-  padding: 5rem 0 2rem 0;
-  margin-top: 4rem;
-  border-top: 1px solid rgba(255, 77, 148, 0.2); /* Línea sutil rosa arriba */
+    background-color: #0a0a0a; /* Fondo casi negro para contraste */
+    color: #ffffff;
+    padding: 5rem 0 2rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid rgba(255, 77, 148, 0.2); /* Línea sutil rosa arriba */
 }
 
 .footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
 }
 
 .footer-top {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 3rem;
-  margin-bottom: 4rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-bottom: 4rem;
 }
 
 .footer-brand {
-  flex: 1;
-  min-width: 250px;
+    flex: 1;
+    min-width: 250px;
 }
 
 .footer-logo {
-  width: 180px;
-  margin-bottom: 1.5rem;
-  filter: brightness(1.1); /* Realza un poco el logo sobre el fondo oscuro */
+    width: 180px;
+    margin-bottom: 1.5rem;
+    filter: brightness(1.1); /* Realza un poco el logo sobre el fondo oscuro */
 }
 
 .footer-brand p {
-  color: #888;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
+    color: #888;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
 }
 
 .footer-links {
-  display: flex;
-  gap: 4rem;
-  flex-wrap: wrap;
+    display: flex;
+    gap: 4rem;
+    flex-wrap: wrap;
 }
 
 .footer-column h4 {
-  color: var(--rosa-acento); /* Títulos en rosa */
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-  margin-bottom: 1.5rem;
+    color: var(--rosa-acento); /* Títulos en rosa */
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
 }
 
 .footer-column ul {
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
 .footer-column ul li {
-  margin-bottom: 0.8rem;
+    margin-bottom: 0.8rem;
 }
 
 .footer-column ul li a {
-  color: #ccc;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.3s ease;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
 }
 
 .footer-column ul li a:hover {
-  color: var(--rosa-acento); /* Enlaces se vuelven rosa al pasar el ratón */
+    color: var(--rosa-acento); /* Enlaces se vuelven rosa al pasar el ratón */
 }
 
 .footer-bottom {
-  border-top: 1px solid #222;
-  padding-top: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
-  color: #555;
+    border-top: 1px solid #222;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #555;
 }
 
 .legal-links {
-  display: flex;
-  gap: 2rem;
+    display: flex;
+    gap: 2rem;
 }
 
 .legal-links a {
-  color: #555;
-  text-decoration: none;
-  transition: color 0.3s;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s;
 }
 
 .legal-links a:hover {
-  color: #888;
+    color: #888;
 }
 
 /* Ajuste para móviles */
 @media (max-width: 768px) {
-  .footer-top {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .footer-brand, .footer-links {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .footer-links {
-    gap: 2rem;
-  }
-  
-  .footer-bottom {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-  }
+    .footer-top {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-brand,
+    .footer-links {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .footer-links {
+        gap: 2rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
 }

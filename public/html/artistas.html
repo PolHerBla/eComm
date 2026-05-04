@@ -3,9 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>eCommerce Minimalista - Estructura de Artistas</title>
+        <title>eCommerce Minimalista - Artistas</title>
         <link rel="stylesheet" href="../css/ecomm.css" />
-        <script src="../js/index.js" defer></script>
+        <script src="../js/artistas.js" defer></script>
     </head>
 
     <body id="top">
@@ -32,7 +32,11 @@
                     <div class="dropdown-menu" id="dropdownMenu">
                         <ul class="menu-links">
                             <li><a href="/html/ecommerce.html">Inicio</a></li>
-                            <li><a href="#products-content">Productos</a></li>
+                            <li>
+                                <a href="/html/ecommerce.html#products-content"
+                                    >Productos</a
+                                >
+                            </li>
                             <li><a href="/html/artistas.html">Artistas</a></li>
                             <li>
                                 <a href="/html/login.html"
@@ -44,11 +48,19 @@
                 </div>
             </nav>
 
-            <div class="hero-content"></div>
+            <div class="hero-content">
+                <p>Nuestros Artistas</p>
+            </div>
         </header>
+
         <div class="container">
-            <main id="products-content"></main>
+            <main id="artists-content">
+                <div class="products-grid" id="artists-grid">
+                    <!-- Tarjetas de artistas generadas dinámicamente -->
+                </div>
+            </main>
         </div>
+
         <footer class="main-footer">
             <div class="footer-container">
                 <div class="footer-top">
@@ -68,7 +80,10 @@
                                     <a href="/html/ecommerce.html">Inicio</a>
                                 </li>
                                 <li>
-                                    <a href="#products-content">Productos</a>
+                                    <a
+                                        href="/html/ecommerce.html#products-content"
+                                        >Productos</a
+                                    >
                                 </li>
                                 <li>
                                     <a href="/html/artistas.html">Artistas</a>
