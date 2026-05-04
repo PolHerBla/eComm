@@ -25,14 +25,11 @@ function crearCard(id, name, splatterImg, imgHover) {
   const product_name = document.createElement('h3');
   product_name.textContent = `${name}`;
 
-  const product_price = document.createElement('p');
-  product_price.textContent = 'Glati';
-
 
   // Añado cada elemento en si div
   product_img_container.append(mainImage, hoverImg);
 
-  product_info.append(product_name, product_price);
+  product_info.append(product_name);
 
   // Añado todo al div principal de producto
   product.append(product_img_container, product_info);

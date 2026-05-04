@@ -1,40 +1,44 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gestión de Usuarios</title>
-    <link rel="stylesheet" href="../css/login.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <header>
-        <h1>Riverland</h1>
-        <p class="subtitle">
-          Accede al eCommerce del Riverland
-        </p>
-      </header>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>RIVERLAND - Acceso</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Unbounded:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/login.css" />
+        <link rel="stylesheet" href="../css/brutalist-theme.css" />
+    </head>
+    <body class="brutalist-theme">
+        <div class="grain-overlay"></div>
+        <div class="login-container">
+            <header>
+                <h1>RIVERLAND</h1>
+                <p class="subtitle">ZONA DE GESTIÓN</p>
+            </header>
 
-      <main class="grid-container">
-        <section class="card">
-          <h2>Inicio de Sesión</h2>
-          <input
-            type="text"
-            id="inputEmail"
-            placeholder="tuemail@example.com"
-          />
-          <input type="password" id="inputPassword" placeholder="Contraseña" />
-          <button class="btn-primary" id="tokenButton">Iniciar Sesión</button>
-        </section>
+            <main class="grid-container">
+                <section class="card brutalist-card">
+                    <h2>ACCESO</h2>
+                    <div class="input-group">
+                        <input
+                            type="text"
+                            id="inputEmail"
+                            placeholder="EMAIL"
+                        />
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="inputPassword" placeholder="CONTRASEÑA" />
+                    </div>
+                    <button class="btn-primary" id="tokenButton">ENTRAR</button>
+                    <a href="ecommerce.html" class="back-link">← VOLVER</a>
+                </section>
 
-        <div id="mensajeEstado" class="mensaje-oculto"></div>
-      </main>
-    </div>
+                <div id="mensajeEstado" class="mensaje-oculto"></div>
+            </main>
+        </div>
 
-    <script src="../js/login.js"></script>
-  </body>
+        <script src="../js/login.js"></script>
+    </body>
 </html>

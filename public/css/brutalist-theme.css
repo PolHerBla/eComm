@@ -104,6 +104,29 @@
     padding: 6rem 3rem;
 }
 
+/* Artist Tags on Home Page */
+.brutalist-theme .artist-tag {
+    background: transparent;
+    border: 2px solid var(--accent-pink);
+    color: var(--accent-pink);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    margin-bottom: 3rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: all 0.2s steps(2);
+}
+
+.brutalist-theme .artist-tag:hover {
+    background: var(--accent-pink);
+    color: var(--bg-color);
+    box-shadow: 8px 8px 0 var(--text-primary);
+    transform: translate(-4px, -4px);
+}
+
 .brutalist-theme .products-grid {
     gap: 0; /* Tight grid with borders */
     border-top: 1px solid var(--border-color);
@@ -139,9 +162,11 @@
     z-index: 2;
     position: relative;
     display: flex;
+    flex-direction: column; /* Stack name and price/info */
     justify-content: center;
     align-items: center;
     text-align: center;
+    gap: 0.5rem;
 }
 
 .brutalist-theme .product-card:hover .product-info {
@@ -179,6 +204,104 @@
 .brutalist-theme .product-card:hover::after {
     opacity: 1;
     transform: translateX(0);
+}
+
+/* Login Specific Brutalist Overrides */
+.brutalist-theme .login-container {
+    max-width: 400px;
+    margin: 8rem auto;
+}
+
+.brutalist-theme .login-container header h1 {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.brutalist-theme .login-container .subtitle {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    color: var(--accent-pink);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.brutalist-theme .card.brutalist-card {
+    background: #111;
+    border: 2px solid var(--border-color);
+    padding: 3rem;
+    box-shadow: 15px 15px 0px var(--accent-pink);
+}
+
+.brutalist-theme .card h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    border: none;
+    text-align: center;
+}
+
+.brutalist-theme input[type="text"],
+.brutalist-theme input[type="password"] {
+    background: #000;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 1rem;
+    font-family: var(--font-body);
+    margin-bottom: 1rem;
+    width: 100%;
+    outline: none;
+}
+
+.brutalist-theme input:focus {
+    border-color: var(--accent-pink);
+}
+
+.brutalist-theme .btn-primary {
+    background: var(--accent-pink);
+    color: var(--bg-color);
+    font-family: var(--font-display);
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s steps(2);
+    margin-top: 1rem;
+}
+
+.brutalist-theme .btn-primary:hover {
+    background: var(--text-primary);
+    transform: translate(-4px, -4px);
+    box-shadow: 4px 4px 0 var(--accent-pink);
+}
+
+.brutalist-theme .back-link {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    transition: color 0.3s;
+}
+
+.brutalist-theme .back-link:hover {
+    color: var(--accent-pink);
+}
+
+.brutalist-theme .mensaje-oculto.mostrar-mensaje {
+    background: var(--accent-pink);
+    color: var(--bg-color);
+    font-family: var(--font-body);
+    font-weight: 700;
+    border-radius: 0;
+    margin-top: 2rem;
 }
 
 /* Footer Overrides */

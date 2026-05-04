@@ -1,0 +1,147 @@
+/* Product Detail Brutalist Overrides */
+.product-page .container {
+    max-width: 100%;
+    padding: 0;
+}
+
+.product-page .product-nav {
+    padding: 2rem 3rem;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-color);
+}
+
+.product-page .product-nav .back-link {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.product-page .product-nav .back-link:hover {
+    color: var(--accent-pink);
+}
+
+/* Split Screen Layout */
+.product-page .product-detail-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    min-height: calc(100vh - 100px);
+}
+
+/* Visuals Side */
+.product-page .product-visuals {
+    border-right: 1px solid var(--border-color);
+    background: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+}
+
+.product-page .main-image-container {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 1/1;
+    position: relative;
+    border: 2px solid var(--border-color);
+    overflow: hidden;
+}
+
+.product-page #product-image-stack img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: contrast(1.1);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.product-page .main-image-container:hover img {
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1.05);
+}
+
+/* Info Panel Side */
+.product-page .product-info-panel {
+    padding: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-page .info-header {
+    margin-bottom: 4rem;
+}
+
+.product-page .category-tag {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 900;
+    color: var(--accent-pink);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    margin-bottom: 1.5rem;
+}
+
+.product-page #titulo-producto {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+.product-page .price-tag {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 200;
+    color: var(--text-primary);
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+    display: inline-block;
+}
+
+/* Description Section */
+.product-page .product-description {
+    max-width: 500px;
+}
+
+.product-page .product-description h3 {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--accent-pink);
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+}
+
+.product-page #descripcion-producto {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .product-page .product-detail-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-page .product-visuals {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding: 2rem;
+    }
+    
+    .product-page .product-info-panel {
+        padding: 3rem 2rem;
+    }
+}
