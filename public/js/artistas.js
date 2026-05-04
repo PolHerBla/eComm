@@ -9,7 +9,6 @@ function crearCardArtista(id, name, description, image, hoverImage) {
   mainImage.classList.add("img-primary");
   mainImage.src = image;
 
-  // We add the same image for hover so there's no visual bug when hovering
   const hoverImg = document.createElement("img");
   hoverImg.classList.add("img-hover");
   hoverImg.src = hoverImage || image;
@@ -17,32 +16,12 @@ function crearCardArtista(id, name, description, image, hoverImage) {
   const artist_info = document.createElement("div");
   artist_info.classList.add("product-info");
 
-  // Centrar elementos vertical y horizontalmente
-  artist_info.style.flexDirection = "column";
-  artist_info.style.justifyContent = "center";
-  artist_info.style.alignItems = "center";
-  artist_info.style.textAlign = "center";
-  artist_info.style.padding = "2rem 1.5rem"; // Añadir padding vertical para espaciado
-  artist_info.style.minHeight = "auto";
-
   const artist_name = document.createElement("h3");
   artist_name.textContent = name;
-  artist_name.style.marginBottom = "0.75rem";
-  artist_name.style.fontSize = "1.3rem";
-  artist_name.style.paddingRight = "0"; // Sobrescribe el padding-right del CSS general
-
-  const artist_desc = document.createElement("p");
-  artist_desc.textContent = description;
-  artist_desc.style.whiteSpace = "normal"; // Permitir múltiples líneas
-  artist_desc.style.fontSize = "0.95rem";
-  artist_desc.style.lineHeight = "1.6";
-  artist_desc.style.color = "#555";
 
   img_container.append(mainImage, hoverImg);
-  artist_info.append(artist_name, artist_desc);
+  artist_info.append(artist_name);
   artist.append(img_container, artist_info);
-
-  artist.style.cursor = "default"; // No es clickeable de momento
 
   return artist;
 }

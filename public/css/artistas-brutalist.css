@@ -1,0 +1,212 @@
+/* Dark Brutalist Gallery Aesthetic Overrides */
+:root {
+    --bg-color: #000000;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent-pink: #ff4d94;
+    --border-color: #333333;
+    --font-display: 'Unbounded', sans-serif;
+    --font-body: 'Space Grotesk', sans-serif;
+}
+
+/* Global Reset Overrides */
+.brutalist-theme {
+    background-color: var(--bg-color) !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-body) !important;
+    overflow-x: hidden;
+}
+
+.brutalist-theme * {
+    border-radius: 0 !important; /* Harsh edges only */
+    transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Grain Overlay */
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.08;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Hero Section Refinement */
+.brutalist-theme .hero-section {
+    height: 90vh;
+    border-bottom: 2px solid var(--accent-pink);
+}
+
+.brutalist-theme .hero-content p {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(3rem, 10vw, 8rem);
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: -0.05em;
+    color: var(--text-primary);
+    mix-blend-mode: difference;
+}
+
+/* Navbar Brutalist */
+.brutalist-theme .navbar {
+    padding: 3rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.brutalist-theme .dropdown-menu {
+    background-color: var(--bg-color);
+    border: 1px solid var(--accent-pink);
+    border-radius: 0 !important;
+    box-shadow: 10px 10px 0px var(--accent-pink);
+}
+
+.brutalist-theme .menu-links li {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.brutalist-theme .menu-links a {
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.brutalist-theme .menu-links a:hover {
+    background-color: var(--accent-pink);
+    color: var(--bg-color);
+}
+
+.brutalist-theme .menu-btn .bar {
+    background-color: var(--text-primary);
+    width: 35px;
+    height: 2px;
+}
+
+.brutalist-theme .menu-btn:hover .bar:first-child {
+    width: 35px;
+    transform: translateY(7px) rotate(45deg);
+}
+
+.brutalist-theme .menu-btn:hover .bar:last-child {
+    width: 35px;
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Artists Grid Starkness */
+.brutalist-theme .container {
+    max-width: 1600px;
+    padding: 6rem 3rem;
+}
+
+.brutalist-theme .products-grid {
+    gap: 0; /* Tight grid with borders */
+    border-top: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+}
+
+/* Artist Card */
+.brutalist-theme .product-card {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-left: none;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.brutalist-theme .product-image-container {
+    background-color: #111;
+    filter: grayscale(100%) contrast(1.1);
+    transition: filter 0.4s steps(4), transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.brutalist-theme .product-card:hover .product-image-container {
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1.02);
+}
+
+.brutalist-theme .product-info {
+    padding: 2rem !important;
+    background: var(--bg-color);
+    border-top: 1px solid var(--border-color);
+    z-index: 2;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.brutalist-theme .product-card:hover .product-info {
+    border-top-color: var(--accent-pink);
+}
+
+.brutalist-theme .product-info h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-primary) !important; /* Ensure it stays visible against black bg */
+    margin-bottom: 0 !important;
+    letter-spacing: -0.02em;
+}
+
+.brutalist-theme .product-card:hover .product-info h3 {
+    color: var(--accent-pink) !important; /* Optional: Change to pink on hover for feedback */
+}
+
+.brutalist-theme .product-card::after {
+    content: 'VIEW ARTIST';
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 900;
+    color: var(--accent-pink);
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+}
+
+.brutalist-theme .product-card:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Footer Overrides */
+.brutalist-theme .main-footer {
+    background-color: var(--bg-color);
+    border-top: 2px solid var(--accent-pink);
+    padding-top: 8rem;
+}
+
+.brutalist-theme .footer-column h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.brutalist-theme .footer-logo {
+    filter: invert(1) brightness(2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .brutalist-theme .navbar {
+        padding: 1.5rem;
+    }
+    .brutalist-theme .hero-content p {
+        font-size: 4rem;
+    }
+    .brutalist-theme .container {
+        padding: 3rem 1.5rem;
+    }
+}
